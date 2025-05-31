@@ -1,0 +1,48 @@
+# Python virtual environments
+.env/
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*.so
+
+# Log files
+*.log
+
+# Local configuration files
+*.env
+*.DS_Store
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# MkDocs output
+site/
+
+# Poetry files
+poetry.lock
+
+# Conda files
+*.conda
+*.yml
+*.yaml
+
+# Temporary data
+*.tmp
+*.bak
+
+# Jupyter notebooks checkpoints (if used)
+.ipynb_checkpoints/
+
+# Caches
+.cache/
+.mypy_cache/
+pytest_cache/
+
+# Local config
+config.yaml
