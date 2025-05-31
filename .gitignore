@@ -1,3 +1,4 @@
+cat > .gitignore <<EOF
 # Python virtual environments
 .env/
 .venv/
@@ -46,3 +47,4 @@ pytest_cache/
 
 # Local config
 config.yaml
+EOF
