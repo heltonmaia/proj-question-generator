@@ -1,0 +1,15 @@
+Teste 1:
+Input: 4\n9\n12\n17\n6
+Output: O número 4 é par.
+O número 9 é ímpar.
+O número 12 é par.
+O número 17 é ímpar.
+O número 6 é par.
+
+Teste 2:
+Input: 5\n6\n7\n1\n2
+Output: O número 5 é ímpar.
+O número 6 é par.
+O número 7 é ímpar.
+O número 1 é ímpar.
+O número 2 é par.

@@ -1,0 +1,20 @@
+Teste 1:
+Input: 10.5 20.0 5.5 14.0
+Output: Soma: 50.00
+Média: 12.50
+Máximo: 20.00
+Mínimo: 5.50
+
+Teste 2:
+Input: 5.0 -2.0 0.0 10.0 -7.0
+Output: Soma: 6.00
+Média: 1.20
+Máximo: 10.00
+Mínimo: -7.00
+
+Teste 3:
+Input: 7.77 7.77 7.77
+Output: Soma: 23.31
+Média: 7.77
+Máximo: 7.77
+Mínimo: 7.77

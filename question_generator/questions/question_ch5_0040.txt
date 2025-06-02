@@ -1,0 +1,174 @@
+---
+
+### Formato da Questão Gerada
+
+#### Enunciado
+
+Crie um programa que funcione como uma calculadora de área para diferentes formas geométricas: triângulo, círculo e retângulo. O programa deve fornecer um menu fácil de usar para que o usuário selecione a forma desejada e, em seguida, insira as dimensões necessárias para calcular a área.
+
+**Sua implementação deve seguir as seguintes diretrizes:**
+
+1.  **Função Principal `calcular_area()`**: Esta função será o ponto de entrada do seu programa. Ela deve apresentar um menu ao usuário com as seguintes opções:
+    *   `1`: Calcular a área de um triângulo (requer base e altura)
+    *   `2`: Calcular a área de um círculo (requer raio)
+    *   `3`: Calcular a área de um retângulo (requer comprimento e largura)
+    *   `4`: Sair do programa
+    A função deve continuar exibindo o menu e solicitando a escolha do usuário até que a opção `4` seja selecionada.
+
+2.  **Funções de Cálculo Separadas**: Crie individualmente uma função para o cálculo das áreas de cada forma geométrica:
+    *   `area_triangulo(base, altura)`: Recebe a base e a altura do triângulo e retorna sua área.
+    *   `area_circulo(raio)`: Recebe o raio do círculo e retorna sua área.
+    *   `area_retangulo(comprimento, largura)`: Recebe o comprimento e a largura do retângulo e retorna sua área.
+
+3.  **Observações Importantes**:
+    *   Utilize a biblioteca `math` para obter o valor de π (pi) nos cálculos do círculo.
+    *   Arredonde todos os resultados das áreas para **duas casas decimais**.
+    *   Considere que as entradas do usuário para as dimensões serão sempre números válidos (inteiros ou decimais).
+
+#### Code Solução
+
+```python
+import math
+
+def area_triangulo(base: float, altura: float) -> float:
+    """
+    Calcula a área de um triângulo.
+
+    Args:
+        base (float): A base do triângulo.
+        altura (float): A altura do triângulo.
+
+    Returns:
+        float: A área calculada do triângulo, arredondada para duas casas decimais.
+    """
+    return round(0.5 * base * altura, 2)
+
+def area_circulo(raio: float) -> float:
+    """
+    Calcula a área de um círculo.
+
+    Args:
+        raio (float): O raio do círculo.
+
+    Returns:
+        float: A área calculada do círculo, arredondada para duas casas decimais.
+    """
+    return round(math.pi * (raio ** 2), 2)
+
+def area_retangulo(comprimento: float, largura: float) -> float:
+    """
+    Calcula a área de um retângulo.
+
+    Args:
+        comprimento (float): O comprimento do retângulo.
+        largura (float): A largura do retângulo.
+
+    Returns:
+        float: A área calculada do retângulo, arredondada para duas casas decimais.
+    """
+    return round(comprimento * largura, 2)
+
+def calcular_area():
+    """
+    Função principal que apresenta um menu ao usuário para calcular a área de
+    diferentes formas geométricas.
+    """
+    while True:
+        print("\n--- Calculadora de Área de Formas Geométricas ---")
+        print("1: Calcular a área de um triângulo (base e altura)")
+        print("2: Calcular a área de um círculo (raio)")
+        print("3: Calcular a área de um retângulo (comprimento e largura)")
+        print("4: Sair do programa")
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == '1':
+            base = float(input("Digite a base do triângulo: "))
+            altura = float(input("Digite a altura do triângulo: "))
+            area = area_triangulo(base, altura)
+            print(f"A área do triângulo é: {area:.2f}")
+        elif opcao == '2':
+            raio = float(input("Digite o raio do círculo: "))
+            area = area_circulo(raio)
+            print(f"A área do círculo é: {area:.2f}")
+        elif opcao == '3':
+            comprimento = float(input("Digite o comprimento do retângulo: "))
+            largura = float(input("Digite a largura do retângulo: "))
+            area = area_retangulo(comprimento, largura)
+            print(f"A área do retângulo é: {area:.2f}")
+        elif opcao == '4':
+            print("Programa encerrado.")
+            break
+        else:
+            print("Opção inválida. Por favor, escolha uma opção entre 1 e 4.")
+
+# Chama a função principal para iniciar o programa
+calcular_area()
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+1
+5
+10
+```
+Saída:
+```
+--- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite a base do triângulo: Digite a altura do triângulo: A área do triângulo é: 25.00
+```
+
+**Teste 2**
+Entrada:
+```
+2
+3
+```
+Saída:
+```
+--- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite o raio do círculo: A área do círculo é: 28.27
+```
+
+**Teste 3**
+Entrada:
+```
+3
+4
+6
+```
+Saída:
+```
+--- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite o comprimento do retângulo: Digite a largura do retângulo: A área do retângulo é: 24.00
+```
+
+**Teste 4**
+Entrada:
+```
+4
+```
+Saída:
+```
+--- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Programa encerrado.
+```

@@ -1,0 +1,84 @@
+```
+#### Enunciado
+
+Imagine que você tem uma lista de números. O objetivo é calcular o N-ésimo número da sequência de Fibonacci para cada número dessa lista e imprimir a soma total desses números.
+
+A sequência de Fibonacci é uma série onde cada número é a soma dos dois anteriores, começando com 0 e 1: 0, 1, 1, 2, 3, 5, 8, 13, 21...
+
+Para isso, você precisará criar duas funções recursivas:
+
+1.  **`fibonacci(n)`**: Esta função receberá um número inteiro `n` e, usando a recursão, calculará o N-ésimo número na sequência de Fibonacci. As condições base para a recursão devem ser:
+    *   Se `n` for 0, retorna 0.
+    *   Se `n` for 1, retorna 1.
+    *   Para `n` maior que 1, retorna a soma de `fibonacci(n-1)` e `fibonacci(n-2)`.
+
+2.  **`soma_lista_recursiva(lista)`**: Esta função receberá uma lista de números (que serão os resultados da função `fibonacci`) e, novamente usando a recursão, somará todos os elementos dessa lista. A condição base deve ser quando a lista está vazia.
+
+No programa principal, você deve:
+*   Ler uma linha de números inteiros separados por espaço (que representarão os `n` para a função `fibonacci`).
+*   Processar cada número de entrada usando a função `fibonacci` para obter o valor correspondente na sequência.
+*   Coletar todos os resultados da `fibonacci` em uma nova lista.
+*   Finalmente, usar a função `soma_lista_recursiva` para obter a soma total de todos os valores de Fibonacci calculados.
+*   Imprimir na tela a soma total.
+
+#### Code Solução
+
+```python
+def fibonacci(n: int) -> int:
+    """
+    Calcula o N-ésimo número da sequência de Fibonacci de forma recursiva.
+    A sequência começa com 0, 1, 1, 2, ...
+    """
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+def soma_lista_recursiva(lista: list[int]) -> int:
+    """
+    Soma todos os elementos de uma lista de números inteiros de forma recursiva.
+    """
+    if not lista:  # Condição base: lista vazia
+        return 0
+    else:
+        # Chamada recursiva: soma o primeiro elemento com a soma do restante da lista
+        return lista[0] + soma_lista_recursiva(lista[1:])
+
+# Programa principal
+if __name__ == "__main__":
+    # Lê os números de entrada como uma única linha de inteiros separados por espaço
+    numeros_entrada_str = input().split()
+    numeros_entrada = [int(x) for x in numeros_entrada_str]
+
+    resultados_fibonacci = []
+    for num in numeros_entrada:
+        resultados_fibonacci.append(fibonacci(num))
+
+    soma_total = soma_lista_recursiva(resultados_fibonacci)
+    print(soma_total)
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+```
+Saída:
+```
+1596
+```
+
+**Teste 2**
+Entrada:
+```
+10 11 9 15 17 23 13 27 12 11 22
+```
+Saída:
+```
+245637
+```
+```

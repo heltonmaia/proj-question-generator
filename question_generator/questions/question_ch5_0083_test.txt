@@ -1,0 +1,23 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma total: 15
+Quantidade de números pares: 2
+Quantidade de números ímpares: 3
+
+Teste 2:
+Input: 
+Output: Soma total: 0
+Quantidade de números pares: 0
+Quantidade de números ímpares: 0
+
+Teste 3:
+Input: -2 0 10 24 -6
+Output: Soma total: 26
+Quantidade de números pares: 5
+Quantidade de números ímpares: 0
+
+Teste 4:
+Input: 1 3 5 7 9
+Output: Soma total: 25
+Quantidade de números pares: 0
+Quantidade de números ímpares: 5

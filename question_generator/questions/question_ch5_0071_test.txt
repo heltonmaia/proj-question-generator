@@ -1,0 +1,23 @@
+Teste 1:
+Input: 4\n5\n0
+Output: O primeiro número é par: True
+O segundo número é positivo: True
+O terceiro número é zero: True
+
+Teste 2:
+Input: 7\n-3\n10
+Output: O primeiro número é par: False
+O segundo número é positivo: False
+O terceiro número é zero: False
+
+Teste 3:
+Input: -2\n0\n-5
+Output: O primeiro número é par: True
+O segundo número é positivo: False
+O terceiro número é zero: False
+
+Teste 4:
+Input: 1\n1\n0
+Output: O primeiro número é par: False
+O segundo número é positivo: True
+O terceiro número é zero: True

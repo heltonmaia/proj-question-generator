@@ -1,0 +1,98 @@
+## Questão Gerada
+
+### Enunciado
+
+Desenvolva um programa Python que calcule a soma e a média de uma lista de números fornecida pelo usuário.
+
+O programa deve:
+1.  Solicitar ao usuário que insira uma sequência de números, todos na mesma linha, separados por espaços.
+2.  Criar uma função chamada `calcular_estatisticas_lista` que receba essa lista de números como argumento.
+3.  Dentro da função `calcular_estatisticas_lista`, calcule a soma de todos os números e a média aritmética.
+4.  A função deve retornar **dois valores**: a soma total e a média.
+5.  Caso a lista de entrada seja vazia, a função deve retornar `(0.0, 0.0)` para a soma e a média, respectivamente.
+6.  No programa principal, chame a função com a lista de números e imprima os resultados da soma e da média, formatando-os para duas casas decimais.
+
+### Code Solução
+
+```python
+def calcular_estatisticas_lista(numeros: list[float]) -> tuple[float, float]:
+    """
+    Calcula a soma e a média de uma lista de números.
+
+    Args:
+        numeros: Uma lista de números (float).
+
+    Returns:
+        Uma tupla contendo a soma total e a média dos números.
+        Retorna (0.0, 0.0) se a lista estiver vazia.
+    """
+    if not numeros:
+        return 0.0, 0.0
+    
+    total_soma = sum(numeros)
+    media = total_soma / len(numeros)
+    return total_soma, media
+
+# Leitura da entrada: uma linha com números separados por espaço
+entrada_str = input()
+# Converte a string de entrada em uma lista de floats.
+# split() sem argumentos lida com múltiplos espaços e entradas vazias.
+try:
+    lista_numeros = list(map(float, entrada_str.split()))
+except ValueError:
+    # Lida com casos onde a entrada contém algo que não é um número (ex: "abc")
+    # Embora o foco não seja tratamento de erro de input, é uma robustez básica.
+    # Para o propósito dos testes, assume-se entrada numérica válida.
+    lista_numeros = []
+
+soma_total, media_total = calcular_estatisticas_lista(lista_numeros)
+
+print(f"Soma: {soma_total:.2f}") 
+print(f"Média: {media_total:.2f}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+10 20 30 40 50
+```
+Saída:
+```
+Soma: 150.00
+Média: 30.00
+```
+
+**Teste 2**
+Entrada:
+```
+-5.5 0 10.5 2.0
+```
+Saída:
+```
+Soma: 7.00
+Média: 1.75
+```
+
+**Teste 3**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma: 0.00
+Média: 0.00
+```
+
+**Teste 4**
+Entrada:
+```
+99.9
+```
+Saída:
+```
+Soma: 99.90
+Média: 99.90
+```

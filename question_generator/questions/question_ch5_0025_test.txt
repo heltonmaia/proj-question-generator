@@ -1,0 +1,23 @@
+Teste 1:
+Input: Python
+Output: Comprimento da string: 6
+Número de vogais: 1
+Número de consoantes: 5
+
+Teste 2:
+Input: Hello World 123!
+Output: Comprimento da string: 15
+Número de vogais: 3
+Número de consoantes: 7
+
+Teste 3:
+Input: 
+Output: Comprimento da string: 0
+Número de vogais: 0
+Número de consoantes: 0
+
+Teste 4:
+Input: @#$ 123 %&*
+Output: Comprimento da string: 11
+Número de vogais: 0
+Número de consoantes: 0

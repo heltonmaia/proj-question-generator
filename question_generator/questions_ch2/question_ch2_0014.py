@@ -1,0 +1,31 @@
+"""Você está desenvolvendo um aplicativo simples para ajudar a organizar o dia a dia. Para isso, crie um programa Python que gerencie uma lista de tarefas pendentes, utilizando as seguintes operações:
+
+1.  **Inicialize** uma lista vazia chamada `tarefas_pendentes`.
+2.  **Solicite** ao usuário que insira **três tarefas iniciais**, uma por vez, e adicione-as ao final da lista `tarefas_pendentes`.
+3.  **Solicite** ao usuário que insira **uma nova tarefa**, e adicione-a também ao final da lista.
+4.  **Solicite** ao usuário que digite o nome de **uma tarefa que ele deseja remover** da lista.
+5.  **Ordene** a lista de tarefas restantes em ordem alfabética.
+6.  **Imprima** a lista final de tarefas, já ordenada."""
+
+tarefas_pendentes = []
+
+# Solicita e adiciona as três tarefas iniciais
+print("Por favor, insira as três tarefas iniciais:")
+tarefas_pendentes.append(input())
+tarefas_pendentes.append(input())
+tarefas_pendentes.append(input())
+
+# Solicita e adiciona uma nova tarefa
+print("Por favor, insira uma nova tarefa para adicionar:")
+tarefas_pendentes.append(input())
+
+# Solicita a tarefa a ser removida
+print("Qual tarefa você gostaria de remover da lista?")
+tarefa_a_remover = input()
+tarefas_pendentes.remove(tarefa_a_remover)
+
+# Ordena a lista em ordem alfabética
+tarefas_pendentes.sort()
+
+# Imprime a lista final de tarefas
+print(f"Lista final de tarefas: {tarefas_pendentes}")

@@ -1,0 +1,34 @@
+Teste 1:
+Input: 8.5,9.0,7.0,6.5,10.0
+Output: Média: 8.20
+Maior nota: 10.00
+Menor nota: 6.50
+Todas aprovadas: False
+
+Teste 2:
+Input: 7.0,8.0,9.5,10.0
+Output: Média: 8.63
+Maior nota: 10.00
+Menor nota: 7.00
+Todas aprovadas: True
+
+Teste 3:
+Input: 
+Output: Média: 0.00
+Maior nota: None
+Menor nota: None
+Todas aprovadas: False
+
+Teste 4:
+Input: 5.0
+Output: Média: 5.00
+Maior nota: 5.00
+Menor nota: 5.00
+Todas aprovadas: False
+
+Teste 5:
+Input: 10.0
+Output: Média: 10.00
+Maior nota: 10.00
+Menor nota: 10.00
+Todas aprovadas: True

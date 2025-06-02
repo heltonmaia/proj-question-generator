@@ -1,0 +1,80 @@
+#### Enunciado
+
+Escreva um programa que solicita ao usuário uma nota numérica de um estudante. O programa deve então classificar esta nota de acordo com as seguintes categorias:
+
+*   **A:** 90.0 ou superior
+*   **B:** 80.0 a 89.9
+*   **C:** 70.0 a 79.9
+*   **D:** 60.0 a 69.9
+*   **F:** Abaixo de 60.0
+
+Ao final, o programa deve imprimir a nota informada e sua classificação correspondente.
+
+#### Code Solução
+
+```python
+nota_str = input()
+nota = float(nota_str)
+
+classificacao = ""
+
+if nota >= 90.0:
+    classificacao = "A"
+elif nota >= 80.0:
+    classificacao = "B"
+elif nota >= 70.0:
+    classificacao = "C"
+elif nota >= 60.0:
+    classificacao = "D"
+else:
+    classificacao = "F"
+
+print(f"Nota: {nota}")
+print(f"Classificação: {classificacao}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+85.5
+```
+Saída:
+```
+Nota: 85.5
+Classificação: B
+```
+
+**Teste 2**
+Entrada:
+```
+92
+```
+Saída:
+```
+Nota: 92.0
+Classificação: A
+```
+
+**Teste 3**
+Entrada:
+```
+59.9
+```
+Saída:
+```
+Nota: 59.9
+Classificação: F
+```
+
+**Teste 4**
+Entrada:
+```
+70.0
+```
+Saída:
+```
+Nota: 70.0
+Classificação: C
+```

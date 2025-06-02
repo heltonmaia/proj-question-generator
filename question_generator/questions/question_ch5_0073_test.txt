@@ -1,0 +1,27 @@
+Teste 1:
+Input: 8.5 7.0 9.0 6.5
+Output: Notas analisadas:
+Soma: 31.0
+Média: 7.75
+Maior nota: 9.0
+Menor nota: 6.5
+
+Teste 2:
+Input: 10.0
+Output: Notas analisadas:
+Soma: 10.0
+Média: 10.00
+Maior nota: 10.0
+Menor nota: 10.0
+
+Teste 3:
+Input: 
+Output: Nenhuma nota inserida para análise.
+
+Teste 4:
+Input: 5.0 5.0 5.0
+Output: Notas analisadas:
+Soma: 15.0
+Média: 5.00
+Maior nota: 5.0
+Menor nota: 5.0

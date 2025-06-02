@@ -1,0 +1,24 @@
+Teste 1:
+Input: 1,2,3,4,5,6
+Output: Soma dos números pares: 12
+Soma dos números ímpares: 9
+
+Teste 2:
+Input: 10,20,30,40
+Output: Soma dos números pares: 100
+Soma dos números ímpares: 0
+
+Teste 3:
+Input: -1,-3,-5,7,9
+Output: Soma dos números pares: 0
+Soma dos números ímpares: 7
+
+Teste 4:
+Input: 0
+Output: Soma dos números pares: 0
+Soma dos números ímpares: 0
+
+Teste 5:
+Input: 
+Output: Soma dos números pares: 0
+Soma dos números ímpares: 0

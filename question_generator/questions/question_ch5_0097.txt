@@ -1,0 +1,121 @@
+#### Enunciado
+
+Desenvolva um programa Python que analise uma lista de números inteiros. Você deve criar uma função chamada `analisar_estatisticas_lista` que receberá uma lista de números inteiros como argumento. Esta função deverá calcular e retornar cinco valores distintos:
+
+1.  A soma de todos os números na lista.
+2.  A média aritmética dos números na lista.
+3.  A contagem de números positivos (maiores que zero).
+4.  A contagem de números negativos (menores que zero).
+5.  A contagem de zeros.
+
+A função deve retornar esses cinco valores como uma tupla. Considere que a lista de entrada nunca estará vazia para o cálculo da média.
+
+No programa principal, você deve:
+*   Definir uma lista de exemplo.
+*   Chamar a função `analisar_estatisticas_lista` com essa lista.
+*   Imprimir cada um dos valores retornados (soma, média, positivos, negativos, zeros) de forma formatada, com a média arredondada para duas casas decimais.
+
+#### Code Solução
+
+```python
+from typing import List, Tuple
+
+def analisar_estatisticas_lista(numeros: List[int]) -> Tuple[int, float, int, int, int]:
+    """
+    Analisa uma lista de números inteiros e retorna várias estatísticas.
+
+    Args:
+        numeros (List[int]): A lista de números inteiros para analisar.
+
+    Returns:
+        Tuple[int, float, int, int, int]: Uma tupla contendo:
+            - A soma total dos números.
+            - A média aritmética dos números.
+            - A contagem de números positivos.
+            - A contagem de números negativos.
+            - A contagem de zeros.
+    """
+    soma_total = 0
+    cont_positivos = 0
+    cont_negativos = 0
+    cont_zeros = 0
+    
+    for num in numeros:
+        soma_total += num
+        if num > 0:
+            cont_positivos += 1
+        elif num < 0:
+            cont_negativos += 1
+        else: # num == 0
+            cont_zeros += 1
+            
+    # A instrução do problema garante que a lista não estará vazia para a média.
+    media = soma_total / len(numeros)
+    
+    return soma_total, media, cont_positivos, cont_negativos, cont_zeros
+
+# --- Programa Principal ---
+# Exemplo de uso
+lista_exemplo_1 = [1, -2, 0, 4, -5, 6, 0, 8, -9, 10]
+soma_1, media_1, positivos_1, negativos_1, zeros_1 = analisar_estatisticas_lista(lista_exemplo_1)
+
+print(f"--- Análise da Lista: {lista_exemplo_1} ---")
+print(f"Soma total: {soma_1}")
+print(f"Média: {media_1:.2f}")
+print(f"Números positivos: {positivos_1}")
+print(f"Números negativos: {negativos_1}")
+print(f"Zeros: {zeros_1}\n")
+
+# Para fins de teste automático, a saída será apenas a do primeiro exemplo para não confundir.
+# No entanto, em um cenário real, você pode ter múltiplas chamadas e prints.
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+(A lista será definida internamente no código conforme `lista_exemplo_1`)
+```python
+lista_exemplo_1 = [1, -2, 0, 4, -5, 6, 0, 8, -9, 10]
+```
+Saída:
+```
+--- Análise da Lista: [1, -2, 0, 4, -5, 6, 0, 8, -9, 10] ---
+Soma total: 13
+Média: 1.30
+Números positivos: 5
+Números negativos: 3
+Zeros: 2
+```
+
+**Teste 2**
+Entrada:
+(Imagine que o código seria alterado para testar esta lista)
+```python
+lista_exemplo_2 = [10, 20, 30, 40, 50]
+```
+Saída Esperada:
+```
+--- Análise da Lista: [10, 20, 30, 40, 50] ---
+Soma total: 150
+Média: 30.00
+Números positivos: 5
+Números negativos: 0
+Zeros: 0
+```
+
+**Teste 3**
+Entrada:
+(Imagine que o código seria alterado para testar esta lista)
+```python
+lista_exemplo_3 = [-1, -5, 0, -10]
+```
+Saída Esperada:
+```
+--- Análise da Lista: [-1, -5, 0, -10] ---
+Soma total: -16
+Média: -4.00
+Números positivos: 0
+Números negativos: 3
+Zeros: 1
+```

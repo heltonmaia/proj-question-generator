@@ -1,0 +1,24 @@
+Teste 1:
+Input: 10
+Output: O número é: Positivo
+O número é: Par
+
+Teste 2:
+Input: -7
+Output: O número é: Negativo
+O número é: Ímpar
+
+Teste 3:
+Input: 0
+Output: O número é: Zero
+O número é: Par
+
+Teste 4:
+Input: 15
+Output: O número é: Positivo
+O número é: Ímpar
+
+Teste 5:
+Input: -4
+Output: O número é: Negativo
+O número é: Par

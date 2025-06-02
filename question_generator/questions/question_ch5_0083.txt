@@ -1,0 +1,112 @@
+#### Enunciado
+
+Escreva uma função Python chamada `analisar_lista_numeros` que recebe uma lista de números inteiros como argumento. A função deve calcular e retornar os seguintes três valores em uma tupla:
+1.  A soma de todos os números na lista.
+2.  A contagem de números pares na lista.
+3.  A contagem de números ímpares na lista.
+
+Se a lista de entrada for vazia, a função deve retornar `(0, 0, 0)`.
+
+No programa principal, solicite ao usuário uma sequência de números inteiros, separados por espaços, em uma única linha. Esta sequência deve ser convertida em uma lista de inteiros antes de ser passada para a função `analisar_lista_numeros`. Em seguida, imprima os resultados retornados pela função de forma clara e legível.
+
+#### Code Solução
+
+```python
+from typing import List, Tuple
+
+def analisar_lista_numeros(numeros: List[int]) -> Tuple[int, int, int]:
+    """
+    Analisa uma lista de números inteiros, retornando a soma,
+    a contagem de pares e a contagem de ímpares.
+
+    Args:
+        numeros (List[int]): A lista de números inteiros a ser analisada.
+
+    Returns:
+        Tuple[int, int, int]: Uma tupla contendo (soma_total, qtd_pares, qtd_impares).
+        Retorna (0, 0, 0) se a lista for vazia.
+    """
+    if not numeros:
+        return (0, 0, 0)
+
+    soma_total = 0
+    qtd_pares = 0
+    qtd_impares = 0
+
+    for num in numeros:
+        soma_total += num
+        if num % 2 == 0:
+            qtd_pares += 1
+        else:
+            qtd_impares += 1
+
+    return (soma_total, qtd_pares, qtd_impares)
+
+# Programa principal
+# Lê a entrada do usuário como uma string e a divide em números
+entrada_str = input("Digite uma sequência de números inteiros separados por espaços: ")
+
+# Converte a string de números em uma lista de inteiros
+# Lida com a possibilidade de uma entrada vazia
+if entrada_str.strip() == "":
+    lista_numeros = []
+else:
+    lista_numeros = [int(x) for x in entrada_str.split()]
+
+soma, pares, impares = analisar_lista_numeros(lista_numeros)
+
+print(f"Soma total: {soma}")
+print(f"Quantidade de números pares: {pares}")
+print(f"Quantidade de números ímpares: {impares}")
+
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5
+```
+Saída:
+```
+Soma total: 15
+Quantidade de números pares: 2
+Quantidade de números ímpares: 3
+```
+
+**Teste 2**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma total: 0
+Quantidade de números pares: 0
+Quantidade de números ímpares: 0
+```
+
+**Teste 3**
+Entrada:
+```
+-2 0 10 24 -6
+```
+Saída:
+```
+Soma total: 26
+Quantidade de números pares: 5
+Quantidade de números ímpares: 0
+```
+
+**Teste 4**
+Entrada:
+```
+1 3 5 7 9
+```
+Saída:
+```
+Soma total: 25
+Quantidade de números pares: 0
+Quantidade de números ímpares: 5
+```

@@ -1,0 +1,131 @@
+```
+#### Enunciado
+
+Crie um programa Python que defina uma função chamada `analisar_lista_numerica`. Esta função deve receber dois parâmetros: uma lista de números (inteiros ou de ponto flutuante) e um valor `limite` (também de ponto flutuante).
+
+A função `analisar_lista_numerica` deve calcular e retornar uma tupla contendo três valores, na seguinte ordem:
+1.  **A soma total** de todos os números presentes na lista.
+2.  **A média aritmética** dos números na lista.
+3.  **A quantidade de números** na lista que são maiores ou iguais ao valor `limite` fornecido.
+
+Se a lista de entrada for vazia, a função deve retornar `(0.0, 0.0, 0)` para evitar erros de divisão por zero na média.
+
+Utilize docstrings para documentar a função e type hints para especificar os tipos dos parâmetros e do retorno, conforme boas práticas de Python.
+
+No programa principal:
+1.  Solicite ao usuário que digite uma sequência de números, separados por espaços. Converta essa entrada em uma lista de números de ponto flutuante.
+2.  Em uma linha separada, solicite ao usuário que digite o valor `limite`.
+3.  Chame a função `analisar_lista_numerica` com a lista e o limite obtidos.
+4.  Imprima os resultados (soma, média e contagem) de forma clara e formatada, arredondando a soma e a média para duas casas decimais.
+
+#### Code Solução
+
+```python
+from typing import List, Tuple
+
+def analisar_lista_numerica(numeros: List[float], limite: float) -> Tuple[float, float, int]:
+    """
+    Analisa uma lista de números, calculando a soma, média e a contagem de números
+    maiores ou iguais a um limite.
+
+    Args:
+        numeros (List[float]): Uma lista de números (inteiros ou decimais).
+        limite (float): O valor limite para a contagem.
+
+    Returns:
+        Tuple[float, float, int]: Uma tupla contendo:
+            - A soma de todos os números.
+            - A média aritmética dos números.
+            - A quantidade de números maiores ou iguais ao limite.
+    """
+    if not numeros:
+        return 0.0, 0.0, 0
+
+    soma_total = sum(numeros)
+    media = soma_total / len(numeros)
+
+    contagem_maiores_iguais = 0
+    for num in numeros:
+        if num >= limite:
+            contagem_maiores_iguais += 1
+
+    return soma_total, media, contagem_maiores_iguais
+
+# Programa principal
+try:
+    # Lendo a sequência de números separados por espaço
+    numeros_str = input()
+    if numeros_str.strip() == "": # Verifica se a string está vazia ou contém apenas espaços
+        numeros = []
+    else:
+        numeros = [float(x) for x in numeros_str.split()]
+
+    # Lendo o valor limite
+    limite = float(input())
+
+    soma_resultado, media_resultado, contagem_resultado = analisar_lista_numerica(numeros, limite)
+
+    print(f"Soma dos números: {soma_resultado:.2f}")
+    print(f"Média dos números: {media_resultado:.2f}")
+    print(f"Quantidade de números maiores ou iguais a {limite:.2f}: {contagem_resultado}")
+
+except ValueError:
+    print("Entrada inválida. Por favor, digite números válidos.")
+except Exception as e:
+    print(f"Ocorreu um erro: {e}")
+
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+10 20 30 40 50
+35.0
+```
+Saída:
+```
+Soma dos números: 150.00
+Média dos números: 30.00
+Quantidade de números maiores ou iguais a 35.00: 2
+```
+
+**Teste 2**
+Entrada:
+```
+5.5 10.0 2.5 15.0 8.0
+7.0
+```
+Saída:
+```
+Soma dos números: 41.00
+Média dos números: 8.20
+Quantidade de números maiores ou iguais a 7.00: 3
+```
+
+**Teste 3**
+Entrada:
+```
+
+10.0
+```
+Saída:
+```
+Soma dos números: 0.00
+Média dos números: 0.00
+Quantidade de números maiores ou iguais a 10.00: 0
+```
+
+**Teste 4**
+Entrada:
+```
+-1 0 1 2 -5 3.5 10.0
+0.0
+```
+Saída:
+```
+Soma dos números: 10.50
+Média dos números: 1.50
+Quantidade de números maiores ou iguais a 0.00: 5
+```

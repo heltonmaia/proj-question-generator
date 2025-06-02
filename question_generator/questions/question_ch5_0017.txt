@@ -1,0 +1,127 @@
+```markdown
+### Enunciado
+
+Desenvolva um programa em Python para calcular o Índice de Massa Corporal (IMC) de uma pessoa, utilizando funções para organizar e modularizar o código.
+
+O programa deve incluir as seguintes funções:
+
+- Uma função `ler_dados()` que solicita ao usuário o peso (em kg) e a altura (em metros). Esta função deve retornar o peso e a altura como uma tupla de valores de ponto flutuante.
+- Uma função `calcular_imc(peso, altura)` que recebe o peso e a altura como parâmetros e calcula o IMC usando a fórmula: `IMC = peso / (altura * altura)`. Esta função deve retornar o valor do IMC.
+- Uma função `classificar_imc(imc)` que recebe o valor do IMC como parâmetro e o classifica de acordo com as faixas padrão. Esta função deve retornar a classificação como uma string.
+
+A classificação do IMC deve seguir a tabela abaixo:
+
+| IMC (kg/m²) | Classificação      |
+|-------------|--------------------|
+| < 18.5      | Abaixo do peso     |
+| 18.5 - 24.9 | Peso normal        |
+| 25.0 - 29.9 | Sobrepeso          |
+| 30.0 - 34.9 | Obesidade grau 1   |
+| 35.0 - 39.9 | Obesidade grau 2   |
+| ≥ 40.0      | Obesidade grau 3   |
+
+No programa principal, chame as funções na ordem adequada para:
+1. Obter os dados do usuário utilizando a função `ler_dados()`.
+2. Calcular o IMC utilizando a função `calcular_imc()`.
+3. Determinar a classificação do IMC utilizando a função `classificar_imc()`.
+4. Imprimir o resultado final no formato: "Seu IMC é X.YY - Classificação: ZZZ", onde X.YY é o valor do IMC formatado para duas casas decimais e ZZZ é a classificação.
+
+**Observação:** Para simplificar, assuma que os valores de peso e altura fornecidos serão válidos (números positivos).
+
+### Code Solução
+
+```python
+def ler_dados() -> tuple[float, float]:
+    """
+    Lê o peso (kg) e a altura (metros) do usuário.
+    Retorna uma tupla contendo o peso e a altura.
+    """
+    peso = float(input())
+    altura = float(input())
+    return peso, altura
+
+def calcular_imc(peso: float, altura: float) -> float:
+    """
+    Calcula o Índice de Massa Corporal (IMC) de uma pessoa.
+    Args:
+        peso (float): O peso da pessoa em quilogramas.
+        altura (float): A altura da pessoa em metros.
+    Returns:
+        float: O valor do IMC.
+    """
+    return peso / (altura ** 2)
+
+def classificar_imc(imc: float) -> str:
+    """
+    Classifica o IMC de acordo com as faixas padrão.
+    Args:
+        imc (float): O valor do IMC a ser classificado.
+    Returns:
+        str: A classificação do IMC.
+    """
+    if imc < 18.5:
+        return "Abaixo do peso"
+    elif 18.5 <= imc < 25.0:
+        return "Peso normal"
+    elif 25.0 <= imc < 30.0:
+        return "Sobrepeso"
+    elif 30.0 <= imc < 35.0:
+        return "Obesidade grau 1"
+    elif 35.0 <= imc < 40.0:
+        return "Obesidade grau 2"
+    else: # imc >= 40.0
+        return "Obesidade grau 3"
+
+# Programa principal
+peso, altura = ler_dados()
+imc = calcular_imc(peso, altura)
+classificacao = classificar_imc(imc)
+print(f"Seu IMC é {imc:.2f} - Classificação: {classificacao}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+90.5
+1.85
+```
+Saída:
+```
+Seu IMC é 26.44 - Classificação: Sobrepeso
+```
+
+**Teste 2**
+Entrada:
+```
+65.0
+1.75
+```
+Saída:
+```
+Seu IMC é 21.22 - Classificação: Peso normal
+```
+
+**Teste 3**
+Entrada:
+```
+45.0
+1.60
+```
+Saída:
+```
+Seu IMC é 17.58 - Classificação: Abaixo do peso
+```
+
+**Teste 4**
+Entrada:
+```
+120.0
+1.70
+```
+Saída:
+```
+Seu IMC é 41.52 - Classificação: Obesidade grau 3
+```
+```

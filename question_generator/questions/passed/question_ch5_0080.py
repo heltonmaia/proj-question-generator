@@ -1,0 +1,51 @@
+"""Crie um programa Python que realize a conversão de temperaturas entre as escalas Celsius e Fahrenheit. O programa deve ser modularizado utilizando funções para as operações de conversão.
+
+Sua solução deve incluir as seguintes funções:
+
+1.  `celsius_para_fahrenheit(celsius: float) -> float`: Esta função deve receber um valor de temperatura em graus Celsius como parâmetro e retornar o valor equivalente em graus Fahrenheit.
+    *   **Fórmula:** `Fahrenheit = Celsius * 9/5 + 32`
+2.  `fahrenheit_para_celsius(fahrenheit: float) -> float`: Esta função deve receber um valor de temperatura em graus Fahrenheit como parâmetro e retornar o valor equivalente em graus Celsius.
+    *   **Fórmula:** `Celsius = (Fahrenheit - 32) * 5/9`
+
+No programa principal:
+*   Solicite ao usuário que digite um valor de temperatura (numérico).
+*   Em seguida, solicite ao usuário que digite a unidade original da temperatura ('C' para Celsius ou 'F' para Fahrenheit). A entrada da unidade deve ser tratada sem distinção entre maiúsculas e minúsculas (ex: 'c' ou 'C' devem ser aceitos para Celsius).
+*   Com base na unidade informada, chame a função de conversão apropriada.
+*   Imprima o resultado da conversão formatado para duas casas decimais, indicando as unidades de origem e destino."""
+
+def celsius_para_fahrenheit(celsius: float) -> float:
+    """
+    Converte uma temperatura de Celsius para Fahrenheit.
+
+    Args:
+        celsius (float): A temperatura em graus Celsius.
+
+    Returns:
+        float: A temperatura equivalente em graus Fahrenheit.
+    """
+    return celsius * 9/5 + 32
+
+def fahrenheit_para_celsius(fahrenheit: float) -> float:
+    """
+    Converte uma temperatura de Fahrenheit para Celsius.
+
+    Args:
+        fahrenheit (float): A temperatura em graus Fahrenheit.
+
+    Returns:
+        float: A temperatura equivalente em graus Celsius.
+    """
+    return (fahrenheit - 32) * 5/9
+
+# Programa principal
+temperatura_input = float(input())
+unidade_original = input().strip().upper()
+
+if unidade_original == 'C':
+    temperatura_convertida = celsius_para_fahrenheit(temperatura_input)
+    print(f"A temperatura de {temperatura_input:.2f}°C é {temperatura_convertida:.2f}°F.")
+elif unidade_original == 'F':
+    temperatura_convertida = fahrenheit_para_celsius(temperatura_input)
+    print(f"A temperatura de {temperatura_input:.2f}°F é {temperatura_convertida:.2f}°C.")
+else:
+    print("Unidade inválida. Por favor, digite 'C' ou 'F'.")

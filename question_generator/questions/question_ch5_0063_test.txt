@@ -1,0 +1,17 @@
+Teste 1:
+Input: 1\n2\n3\n4\n5\nfim
+Output: Soma total: 15
+Quantidade de números pares: 2
+Quantidade de números ímpares: 3
+
+Teste 2:
+Input: 10\n-5\n0\n20\n-8\nfim
+Output: Soma total: 17
+Quantidade de números pares: 4
+Quantidade de números ímpares: 1
+
+Teste 3:
+Input: fim
+Output: Soma total: 0
+Quantidade de números pares: 0
+Quantidade de números ímpares: 0

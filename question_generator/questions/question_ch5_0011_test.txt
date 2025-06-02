@@ -1,0 +1,31 @@
+Teste 1:
+Input: 5\n10\n3\n8\n6
+Output: --- Cálculo da Área do Retângulo ---
+Digite o comprimento do retângulo: 5.0
+Digite a largura do retângulo: 10.0
+A área do retângulo é: 50.00
+
+--- Cálculo da Área do Círculo ---
+Digite o raio do círculo: 3.0
+A área do círculo é: 28.27
+
+--- Cálculo da Área do Triângulo ---
+Digite a base do triângulo: 8.0
+Digite a altura do triângulo: 6.0
+A área do triângulo é: 24.00
+
+Teste 2:
+Input: 2.5\n4.0\n7.2\n10.5\n4.2
+Output: --- Cálculo da Área do Retângulo ---
+Digite o comprimento do retângulo: 2.5
+Digite a largura do retângulo: 4.0
+A área do retângulo é: 10.00
+
+--- Cálculo da Área do Círculo ---
+Digite o raio do círculo: 7.2
+A área do círculo é: 162.86
+
+--- Cálculo da Área do Triângulo ---
+Digite a base do triângulo: 10.5
+Digite a altura do triângulo: 4.2
+A área do triângulo é: 22.05

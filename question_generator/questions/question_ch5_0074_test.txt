@@ -1,0 +1,21 @@
+Teste 1:
+Input: 10.5 20.0 5.2 15.8
+Output: Menor: 5.20
+Maior: 20.00
+Média: 12.88
+
+Teste 2:
+Input: -5.0 0.0 10.0 -1.5 7.5
+Output: Menor: -5.00
+Maior: 10.00
+Média: 2.20
+
+Teste 3:
+Input: 42.0
+Output: Menor: 42.00
+Maior: 42.00
+Média: 42.00
+
+Teste 4:
+Input: 
+Output: A lista está vazia.

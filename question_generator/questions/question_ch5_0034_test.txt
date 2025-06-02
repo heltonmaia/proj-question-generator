@@ -1,0 +1,22 @@
+Teste 1:
+Input: Digite o comprimento do retângulo: 10\nDigite a largura do retângulo: 5
+Output: A área do retângulo é: 50.00
+O perímetro do retângulo é: 30.00
+
+Teste 2:
+Input: Digite o comprimento do retângulo: 7.5\nDigite a largura do retângulo: 4.2
+Output: A área do retângulo é: 31.50
+O perímetro do retângulo é: 23.40
+
+Teste 3:
+Input: Digite o comprimento do retângulo: 8\nDigite a largura do retângulo: 8
+Output: A área do retângulo é: 64.00
+O perímetro do retângulo é: 32.00
+
+Teste 4:
+Input: Digite o comprimento do retângulo: 0\nDigite a largura do retângulo: 10
+Output: Comprimento e largura devem ser valores positivos.
+
+Teste 5:
+Input: Digite o comprimento do retângulo: abc\nDigite a largura do retângulo: 5
+Output: Entrada inválida. Por favor, digite números.

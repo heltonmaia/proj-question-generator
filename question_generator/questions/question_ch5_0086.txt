@@ -1,0 +1,122 @@
+```
+#### Enunciado
+
+Desenvolva um programa Python para analisar o desempenho de um aluno com base em uma lista de notas. O programa deve calcular a média e a mediana das notas e, em seguida, determinar se o aluno foi aprovado, considerando uma média de aprovação padrão de 7.0.
+
+O programa deve ser modularizado utilizando as seguintes funções:
+
+1.  `ler_notas()`: Uma função que não recebe parâmetros. Ela deve solicitar ao usuário que digite uma série de notas (números decimais), separadas por espaço. A função deve retornar uma lista de `float` contendo as notas inseridas.
+2.  `calcular_estatisticas(notas: list[float]) -> tuple[float, float]`: Uma função que recebe uma lista de notas como argumento. Ela deve calcular e retornar uma tupla contendo a média e a mediana das notas, nesta ordem.
+    *   **Média:** A soma de todas as notas dividida pelo número de notas.
+    *   **Mediana:** O valor do meio de uma lista de notas ordenada. Se a lista tiver um número ímpar de elementos, a mediana é o elemento do meio. Se tiver um número par de elementos, a mediana é a média dos dois elementos do meio.
+3.  `verificar_aprovacao(media: float, media_aprovacao: float = 7.0) -> bool`: Uma função que recebe a média do aluno e um parâmetro opcional `media_aprovacao` (com valor padrão de 7.0). Ela deve retornar `True` se a média do aluno for maior ou igual à `media_aprovacao`, e `False` caso contrário.
+
+No programa principal, utilize as funções criadas para:
+*   Obter a lista de notas do usuário.
+*   Calcular a média e a mediana das notas.
+*   Verificar o status de aprovação do aluno.
+*   Imprimir todos os resultados formatados (média e mediana com duas casas decimais).
+
+Assuma que o usuário fornecerá sempre notas válidas e que a lista de notas não será vazia.
+
+#### Code Solução
+
+```python
+def ler_notas() -> list[float]:
+    """
+    Solicita ao usuário que digite uma série de notas e as retorna como uma lista de floats.
+    """
+    notas_str = input("Digite as notas separadas por espaço (ex: 7.5 8.0 6.0): ")
+    return [float(nota) for nota in notas_str.split()]
+
+def calcular_estatisticas(notas: list[float]) -> tuple[float, float]:
+    """
+    Calcula a média e a mediana de uma lista de notas.
+
+    Args:
+        notas: Uma lista de notas (float).
+
+    Returns:
+        Uma tupla contendo a média e a mediana das notas, nesta ordem.
+    """
+    # Calcular Média
+    media = sum(notas) / len(notas)
+
+    # Calcular Mediana
+    notas_ordenadas = sorted(notas)
+    n = len(notas_ordenadas)
+    if n % 2 == 1:
+        # Número ímpar de elementos
+        mediana = notas_ordenadas[n // 2]
+    else:
+        # Número par de elementos
+        meio1 = notas_ordenadas[n // 2 - 1]
+        meio2 = notas_ordenadas[n // 2]
+        mediana = (meio1 + meio2) / 2
+
+    return media, mediana
+
+def verificar_aprovacao(media: float, media_aprovacao: float = 7.0) -> bool:
+    """
+    Verifica se a média do aluno é suficiente para aprovação.
+
+    Args:
+        media: A média do aluno.
+        media_aprovacao: A média mínima para aprovação (padrão é 7.0).
+
+    Returns:
+        True se o aluno for aprovado, False caso contrário.
+    """
+    return media >= media_aprovacao
+
+# Programa Principal
+notas_aluno = ler_notas()
+media_aluno, mediana_aluno = calcular_estatisticas(notas_aluno)
+aprovado = verificar_aprovacao(media_aluno)
+
+print(f"Média das notas: {media_aluno:.2f}")
+print(f"Mediana das notas: {mediana_aluno:.2f}")
+if aprovado:
+    print(f"Status: APROVADO (Média >= 7.0)")
+else:
+    print(f"Status: REPROVADO (Média < 7.0)")
+
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+8.0 7.5 9.0 6.0 7.0
+```
+Saída:
+```
+Média das notas: 7.50
+Mediana das notas: 7.50
+Status: APROVADO (Média >= 7.0)
+```
+
+**Teste 2**
+Entrada:
+```
+5.0 6.0 4.5 5.5
+```
+Saída:
+```
+Média das notas: 5.25
+Mediana das notas: 5.25
+Status: REPROVADO (Média < 7.0)
+```
+
+**Teste 3**
+Entrada:
+```
+7.0 7.0 7.0
+```
+Saída:
+```
+Média das notas: 7.00
+Mediana das notas: 7.00
+Status: APROVADO (Média >= 7.0)
+```

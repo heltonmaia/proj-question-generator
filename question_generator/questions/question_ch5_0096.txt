@@ -1,0 +1,116 @@
+```python
+# Prompt para Gerador de Questões de Python
+
+## Enunciado
+
+Você foi encarregado de criar uma ferramenta de análise básica para um conjunto de dados numéricos. Sua tarefa é desenvolver uma função em Python que receba uma lista de números (inteiros ou de ponto flutuante) e retorne múltiplas informações estatísticas sobre essa lista.
+
+A função deve ser nomeada `analisar_estatisticas_lista` e deve cumprir as seguintes especificações:
+
+-   **Parâmetro:** Receberá um único parâmetro, `numeros`, que será uma lista (`list`) de números (podendo ser `int` ou `float`).
+-   **Retorno:** Deverá retornar uma tupla (`tuple`) contendo exatamente três valores, nesta ordem:
+    1.  A **soma** de todos os elementos da lista.
+    2.  A **média aritmética** dos elementos da lista. Se a lista estiver vazia, a média deve ser `0.0` para evitar erros de divisão por zero.
+    3.  A **contagem** de quantos números na lista são estritamente positivos (ou seja, maiores que zero).
+
+Após definir a função, o programa principal deve:
+1.  Ler uma linha de entrada do usuário, que conterá números separados por espaços.
+2.  Converter esses números para uma lista de ponto flutuante.
+3.  Chamar a função `analisar_estatisticas_lista` com a lista obtida.
+4.  Imprimir a soma, a média e a contagem de números positivos, formatando a soma e a média com duas casas decimais.
+
+## Code Solução
+
+```python
+def analisar_estatisticas_lista(numeros: list[float | int]) -> tuple[float, float, int]:
+    """
+    Analisa uma lista de números e retorna sua soma, média e contagem de positivos.
+
+    Args:
+        numeros: Uma lista de números inteiros ou de ponto flutuante.
+
+    Returns:
+        Uma tupla contendo:
+        - A soma dos elementos da lista (float).
+        - A média aritmética dos elementos da lista (float).
+        - A contagem de números positivos na lista (int).
+    """
+    soma_total = sum(numeros)
+    
+    quantidade_elementos = len(numeros)
+    media = soma_total / quantidade_elementos if quantidade_elementos > 0 else 0.0
+    
+    contagem_positivos = 0
+    for num in numeros:
+        if num > 0:
+            contagem_positivos += 1
+            
+    return soma_total, media, contagem_positivos
+
+# --- Programa Principal ---
+# Lendo a entrada como uma linha de números separados por espaços
+entrada_str = input()
+
+# Convertendo a string de entrada para uma lista de floats
+# Isso lida corretamente com listas vazias também
+numeros_input = [float(x) for x in entrada_str.split()]
+
+# Chamando a função para obter as estatísticas
+soma, media, positivos = analisar_estatisticas_lista(numeros_input)
+
+# Imprimindo os resultados formatados
+print(f"Soma dos elementos: {soma:.2f}")
+print(f"Média dos elementos: {media:.2f}")
+print(f"Números positivos: {positivos}")
+
+```
+
+## Testes
+
+**Teste 1**
+Entrada:
+```
+5 10 -2 0 7 1
+```
+Saída:
+```
+Soma dos elementos: 21.00
+Média dos elementos: 3.50
+Números positivos: 4
+```
+
+**Teste 2**
+Entrada:
+```
+1 2 3 4 5
+```
+Saída:
+```
+Soma dos elementos: 15.00
+Média dos elementos: 3.00
+Números positivos: 5
+```
+
+**Teste 3**
+Entrada:
+```
+-10 -5 0 -1
+```
+Saída:
+```
+Soma dos elementos: -16.00
+Média dos elementos: -4.00
+Números positivos: 0
+```
+
+**Teste 4**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma dos elementos: 0.00
+Média dos elementos: 0.00
+Números positivos: 0
+```

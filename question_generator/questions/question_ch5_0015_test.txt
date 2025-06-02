@@ -1,0 +1,24 @@
+Teste 1:
+Input: 8.5\n7.0\n9.0
+Output: Média: 8.17
+Status: Aprovado
+
+Teste 2:
+Input: 6.0\n5.5\n6.5
+Output: Média: 6.00
+Status: Recuperação
+
+Teste 3:
+Input: 4.0\n3.5\n2.0
+Output: Média: 3.17
+Status: Reprovado
+
+Teste 4:
+Input: 7.0\n7.0\n7.0
+Output: Média: 7.00
+Status: Aprovado
+
+Teste 5:
+Input: 4.9\n4.9\n4.9
+Output: Média: 4.90
+Status: Reprovado

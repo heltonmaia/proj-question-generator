@@ -1,0 +1,103 @@
+## Prompt para Gerador de Questões de Python
+
+### Enunciado
+
+Crie uma função Python chamada `analisar_estatisticas_lista` que recebe uma lista de números inteiros como entrada.
+
+Esta função deve realizar os seguintes cálculos:
+1.  A soma de todos os números na lista.
+2.  A média aritmética desses números.
+
+A função deve retornar ambos os valores: a soma e a média, como uma tupla. Se a lista de entrada for vazia, a função deve retornar `(0, 0.0)` para a soma e a média, respectivamente, para evitar erros de divisão por zero.
+
+No programa principal, você deve:
+1.  Solicitar ao usuário que digite uma sequência de números inteiros, separados por espaços, em uma única linha.
+2.  Converter essa sequência de strings em uma lista de números inteiros.
+3.  Chamar a função `analisar_estatisticas_lista` com a lista criada.
+4.  Imprimir a soma e a média resultantes, formatando a média para ter duas casas decimais.
+
+### Code Solução
+
+```python
+def analisar_estatisticas_lista(numeros: list[int]) -> tuple[int, float]:
+    """
+    Calcula a soma e a média de uma lista de números inteiros.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Returns:
+        Uma tupla contendo a soma dos números (int) e a média (float).
+        Se a lista for vazia, retorna (0, 0.0).
+    """
+    if not numeros:
+        return 0, 0.0
+    
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    return soma, media
+
+# Programa principal
+try:
+    entrada_str = input()
+    if entrada_str.strip() == "": # Verifica se a entrada é uma string vazia ou apenas espaços
+        numeros = []
+    else:
+        numeros_str = entrada_str.split()
+        numeros = [int(num) for num in numeros_str]
+except ValueError:
+    print("Entrada inválida. Por favor, digite apenas números inteiros separados por espaços.")
+    exit() # Encerra o programa se a conversão falhar
+
+soma_resultado, media_resultado = analisar_estatisticas_lista(numeros)
+
+print(f"Soma: {soma_resultado}")
+print(f"Média: {media_resultado:.2f}")
+
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5
+```
+Saída:
+```
+Soma: 15
+Média: 3.00
+```
+
+**Teste 2**
+Entrada:
+```
+10 20 30 40
+```
+Saída:
+```
+Soma: 100
+Média: 25.00
+```
+
+**Teste 3**
+Entrada:
+```
+7
+```
+Saída:
+```
+Soma: 7
+Média: 7.00
+```
+
+**Teste 4**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma: 0
+Média: 0.00
+```

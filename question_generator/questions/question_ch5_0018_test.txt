@@ -1,0 +1,17 @@
+Teste 1:
+Input: 7.5 8.0 6.0 9.5
+Output: Menor nota: 6.0
+Maior nota: 9.5
+Média: 7.75
+
+Teste 2:
+Input: 5.0 5.0 5.0
+Output: Menor nota: 5.0
+Maior nota: 5.0
+Média: 5.00
+
+Teste 3:
+Input: 10.0 2.0 7.5 8.0 4.5
+Output: Menor nota: 2.0
+Maior nota: 10.0
+Média: 6.40

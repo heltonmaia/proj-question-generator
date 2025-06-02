@@ -1,0 +1,97 @@
+#### Enunciado
+
+Crie um programa Python que calcule a soma e a média de uma lista de números. O programa deve incluir uma função que retorne múltiplos valores, demonstrando o uso de funções para modularizar o código e retornar resultados complexos.
+
+1.  **Função `calcular_estatisticas_lista`:**
+    *   Defina uma função chamada `calcular_estatisticas_lista` que aceita um parâmetro: `numeros` (uma lista de `float`).
+    *   Dentro desta função, calcule a soma de todos os elementos da lista.
+    *   Calcule a média aritmética dos elementos da lista.
+    *   A função deve retornar **dois valores**: a soma e a média. Estes valores devem ser retornados como uma tupla.
+    *   **Condição especial:** Se a lista `numeros` estiver vazia (não contiver nenhum número), a função deve retornar `(0.0, 0.0)` para evitar erros de divisão por zero.
+
+2.  **Programa Principal:**
+    *   No programa principal, leia uma linha de entrada do usuário. Esta linha conterá números `float` separados por espaços (ex: `10.5 20.0 5.5`).
+    *   Converta a string de entrada em uma lista de números `float`. Uma linha de entrada vazia deve resultar em uma lista vazia.
+    *   Chame a função `calcular_estatisticas_lista` com a lista criada.
+    *   Desempacote os valores retornados (soma e média) em variáveis separadas.
+    *   Imprima a soma e a média formatadas com duas casas decimais, conforme os exemplos de saída.
+
+#### Code Solução
+
+```python
+def calcular_estatisticas_lista(numeros: list[float]) -> tuple[float, float]:
+    """
+    Calcula a soma e a média de uma lista de números.
+
+    Args:
+        numeros (list[float]): Uma lista de números de ponto flutuante.
+
+    Returns:
+        tuple[float, float]: Uma tupla contendo a soma e a média dos números.
+                             Retorna (0.0, 0.0) se a lista estiver vazia.
+    """
+    if not numeros:
+        return 0.0, 0.0
+    
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    return soma, media
+
+# Programa principal
+entrada_str = input()
+if entrada_str.strip() == "": # Verifica se a entrada está vazia ou contém apenas espaços
+    lista_numeros = []
+else:
+    lista_numeros = [float(x) for x in entrada_str.split()]
+
+soma_total, media_total = calcular_estatisticas_lista(lista_numeros)
+
+print(f"Soma: {soma_total:.2f}")
+print(f"Média: {media_total:.2f}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+10.0 20.0 30.0 40.0
+```
+Saída:
+```
+Soma: 100.00
+Média: 25.00
+```
+
+**Teste 2**
+Entrada:
+```
+5.5
+```
+Saída:
+```
+Soma: 5.50
+Média: 5.50
+```
+
+**Teste 3**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma: 0.00
+Média: 0.00
+```
+
+**Teste 4**
+Entrada:
+```
+-10.0 0.0 10.0 20.0 15.0
+```
+Saída:
+```
+Soma: 35.00
+Média: 7.00
+```

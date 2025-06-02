@@ -1,0 +1,11 @@
+Teste 1:
+Input: sol
+Output: A palavra é curta.
+
+Teste 2:
+Input: python
+Output: A palavra é de tamanho médio.
+
+Teste 3:
+Input: programacao
+Output: A palavra é longa.

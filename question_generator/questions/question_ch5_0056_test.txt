@@ -1,0 +1,17 @@
+Teste 1:
+Input: Python
+Output: Total de caracteres: 6
+Número de vogais: 1
+Número de consoantes: 5
+
+Teste 2:
+Input: Olá, Mundo! Python é incrível.
+Output: Total de caracteres: 30
+Número de vogais: 9
+Número de consoantes: 14
+
+Teste 3:
+Input: 123 !@#$
+Output: Total de caracteres: 8
+Número de vogais: 0
+Número de consoantes: 0

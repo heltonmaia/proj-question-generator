@@ -46,5 +46,5 @@ poetry.lock
 pytest_cache/
 
 # Local config
-config.yaml
+config.yml
 EOF

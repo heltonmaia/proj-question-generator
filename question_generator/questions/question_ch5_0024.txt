@@ -1,0 +1,130 @@
+```
+### Enunciado
+
+Crie um programa Python que realize uma análise estatística básica em uma lista de números inteiros fornecida pelo usuário. O programa deve ser modular, utilizando funções para processar e exibir os resultados.
+
+Sua solução deve incluir as seguintes funções:
+
+1.  **`analisar_estatisticas(numeros: list[int]) -> tuple[int, float]`**:
+    *   Esta função deve receber uma lista de números inteiros como parâmetro.
+    *   Ela deve calcular a **soma** de todos os elementos da lista e a **média aritmética** desses elementos.
+    *   A função deve retornar esses dois valores como uma tupla (soma, media).
+    *   **Observação**: Se a lista estiver vazia, a função deve retornar `(0, 0.0)`.
+
+2.  **`exibir_resultados(soma: int, media: float) -> None`**:
+    *   Esta função deve receber a soma (inteiro) e a média (ponto flutuante) calculadas pela função anterior.
+    *   Ela deve imprimir os resultados de forma formatada, exibindo a soma como um número inteiro e a média com duas casas decimais.
+
+No programa principal, você deve:
+*   Solicitar ao usuário que digite uma linha de números inteiros separados por espaços.
+*   Converter esta linha em uma lista de inteiros.
+*   Chamar a função `analisar_estatisticas` com a lista obtida.
+*   Desempacotar os valores retornados pela função.
+*   Chamar a função `exibir_resultados` com os valores desempacotados para imprimir a análise.
+
+Utilize `docstrings` e `type hints` para documentar e tornar suas funções mais claras.
+
+#### Exemplo de interação:
+
+```
+Entrada:
+10 20 30 40 50
+
+Saída:
+Soma dos números: 150
+Média dos números: 30.00
+```
+
+### Code Solução
+
+```python
+def analisar_estatisticas(numeros: list[int]) -> tuple[int, float]:
+    """
+    Calcula a soma e a média de uma lista de números inteiros.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Returns:
+        Uma tupla contendo a soma (int) e a média (float) dos números.
+        Retorna (0, 0.0) se a lista for vazia.
+    """
+    if not numeros:
+        return 0, 0.0
+
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    return soma, media
+
+def exibir_resultados(soma: int, media: float) -> None:
+    """
+    Exibe a soma e a média de números de forma formatada.
+
+    Args:
+        soma: A soma dos números.
+        media: A média dos números.
+    """
+    print(f"Soma dos números: {soma}")
+    print(f"Média dos números: {media:.2f}")
+
+# --- Programa Principal ---
+# Lê a entrada do usuário (uma linha de números separados por espaço)
+entrada_usuario = input()
+
+# Converte a string de entrada em uma lista de inteiros
+# Lida com o caso de linha vazia para evitar ValueError ao tentar split() ou int()
+if entrada_usuario.strip() == "":
+    lista_de_numeros = []
+else:
+    lista_de_numeros = [int(num) for num in entrada_usuario.split()]
+
+# Chamada das funções e exibição dos resultados
+soma_calculada, media_calculada = analisar_estatisticas(lista_de_numeros)
+exibir_resultados(soma_calculada, media_calculada)
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5
+```
+Saída:
+```
+Soma dos números: 15
+Média dos números: 3.00
+```
+
+**Teste 2**
+Entrada:
+```
+-10 0 10 20 -5
+```
+Saída:
+```
+Soma dos números: 15
+Média dos números: 3.00
+```
+
+**Teste 3**
+Entrada:
+```
+7
+```
+Saída:
+```
+Soma dos números: 7
+Média dos números: 7.00
+```
+
+**Teste 4**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma dos números: 0
+Média dos números: 0.00
+```

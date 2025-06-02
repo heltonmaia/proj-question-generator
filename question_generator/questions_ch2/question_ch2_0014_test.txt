@@ -1,0 +1,7 @@
+Teste 1:
+Input: Comprar pão\nEstudar Python\nFazer exercícios\nLavar louça\nComprar pão
+Output: Lista final de tarefas: ['Estudar Python', 'Fazer exercícios', 'Lavar louça']
+
+Teste 2:
+Input: Ler livro\nCorrer no parque\nPreparar jantar\nOrganizar arquivos\nPreparar jantar
+Output: Lista final de tarefas: ['Correr no parque', 'Ler livro', 'Organizar arquivos']

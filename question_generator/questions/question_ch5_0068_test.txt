@@ -1,0 +1,31 @@
+Teste 1:
+Input: 5 -1 0 2 -3 8 0
+Output: Positivos: 3
+Negativos: 2
+Zeros: 2
+Pares: 4
+Impares: 3
+
+Teste 2:
+Input: -10 10 0 5 -5 20 0 -1
+Output: Positivos: 3
+Negativos: 3
+Zeros: 2
+Pares: 5
+Impares: 3
+
+Teste 3:
+Input: 7
+Output: Positivos: 1
+Negativos: 0
+Zeros: 0
+Pares: 0
+Impares: 1
+
+Teste 4:
+Input: 0 0 0 0
+Output: Positivos: 0
+Negativos: 0
+Zeros: 4
+Pares: 4
+Impares: 0

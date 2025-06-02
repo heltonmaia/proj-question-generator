@@ -1,0 +1,15 @@
+Teste 1:
+Input: # A lista de strings de entrada para a função `processar_lista_strings` é:\n# ["python", "programacao", "funcoes", "lambda", "modularizacao"]
+Output: Lista Original: ['python', 'programacao', 'funcoes', 'lambda', 'modularizacao']
+
+Lista em Maiúsculas: ['PYTHON', 'PROGRAMACAO', 'FUNCOES', 'LAMBDA', 'MODULARIZACAO']
+Lista com Prefixo: ['ITEM: python', 'ITEM: programacao', 'ITEM: funcoes', 'ITEM: lambda', 'ITEM: modularizacao']
+Lista de Comprimentos: [6, 11, 7, 6, 13]
+
+Teste 2:
+Input: # A lista de strings de entrada para a função `processar_lista_strings` é:\n# ["desafio", "codificacao", "facil"]
+Output: Lista Original: ['desafio', 'codificacao', 'facil']
+
+Lista em Maiúsculas: ['DESAFIO', 'CODIFICACAO', 'FACIL']
+Lista com Prefixo: ['ITEM: desafio', 'ITEM: codificacao', 'ITEM: facil']
+Lista de Comprimentos: [7, 11, 5]

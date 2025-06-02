@@ -1,0 +1,42 @@
+"""Escreva uma função Python chamada `analisar_paridade_lista` que receba uma lista de números inteiros como argumento. A função deve calcular a soma de todos os números pares e a soma de todos os números ímpares presentes na lista. Ao final, a função deve retornar esses dois valores como uma tupla: `(soma_pares, soma_impares)`.
+
+No programa principal, você deve:
+1. Solicitar ao usuário que insira uma série de números inteiros em uma única linha, separados por vírgulas (ex: "1,2,3,4,5").
+2. Converter a entrada do usuário em uma lista de inteiros.
+3. Chamar a função `analisar_paridade_lista` com essa lista.
+4. Imprimir os resultados de forma clara, mostrando a soma dos números pares e a soma dos números ímpares, cada um em uma linha separada."""
+
+def analisar_paridade_lista(numeros: list[int]) -> tuple[int, int]:
+    """
+    Calcula a soma dos números pares e ímpares em uma lista de inteiros.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Returns:
+        Uma tupla contendo (soma_pares, soma_impares).
+    """
+    soma_pares = 0
+    soma_impares = 0
+    for num in numeros:
+        if num % 2 == 0:
+            soma_pares += num
+        else:
+            soma_impares += num
+    return soma_pares, soma_impares
+
+# Leitura da entrada do usuário
+# Ex: "1,2,3,4,5"
+entrada_str = input()
+
+# Converte a string de entrada para uma lista de inteiros
+# Garante que números vazios resultantes de vírgulas extras não causem erro
+numeros_str_list = [s.strip() for s in entrada_str.split(',')]
+numeros = [int(s) for s in numeros_str_list if s]
+
+# Chama a função para analisar a lista
+soma_pares_total, soma_impares_total = analisar_paridade_lista(numeros)
+
+# Imprime os resultados
+print(f"Soma dos números pares: {soma_pares_total}")
+print(f"Soma dos números ímpares: {soma_impares_total}")

@@ -1,0 +1,54 @@
+"""Você está desenvolvendo uma ferramenta para analisar dados numéricos. Crie um programa Python que permita ao usuário inserir uma série de números (inteiros ou decimais). A entrada de números deve continuar até que o usuário insira uma linha vazia (apenas pressionar Enter). Após a coleta dos números, o programa deve:
+
+1.  Armazená-los em uma lista.
+2.  Utilizar uma função chamada `calcular_estatisticas_lista` para processar essa lista. Esta função deve receber a lista de números como argumento e retornar uma tupla contendo a soma de todos os números e a média dos números.
+3.  Se a lista estiver vazia (nenhum número foi inserido), a função `calcular_estatisticas_lista` deve retornar `(0.0, 0.0)` para a soma e a média, respectivamente, para evitar erros de divisão por zero.
+4.  Utilize `type hints` para indicar os tipos dos parâmetros e do retorno da função, conforme as boas práticas de Python.
+5.  O programa principal deve então imprimir a soma e a média calculadas, formatando a saída para duas casas decimais.
+
+**Exemplo de interação:**
+Se o usuário digitar `10`, `5.5`, `14` e depois pressionar `Enter` vazio, a saída esperada seria:
+```
+Soma: 29.50
+Média: 9.83
+```"""
+
+from typing import List, Tuple
+
+def calcular_estatisticas_lista(numeros: List[float]) -> Tuple[float, float]:
+    """
+    Calcula a soma e a média de uma lista de números.
+
+    Args:
+        numeros (List[float]): Uma lista de números (inteiros ou decimais).
+
+    Returns:
+        Tuple[float, float]: Uma tupla contendo a soma total dos números e a média.
+                              Retorna (0.0, 0.0) se a lista estiver vazia.
+    """
+    if not numeros:
+        return 0.0, 0.0
+    
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    
+    return soma, media
+
+# Programa principal para ler a entrada e exibir os resultados
+lista_de_numeros = []
+while True:
+    entrada = input()
+    if entrada == "":
+        break
+    try:
+        numero = float(entrada)
+        lista_de_numeros.append(numero)
+    except ValueError:
+        # Para este exercício, assumimos entradas numéricas válidas ou vazias
+        # Uma implementação robusta trataria este erro de forma mais explícita.
+        pass 
+
+soma_total, media_final = calcular_estatisticas_lista(lista_de_numeros)
+
+print(f"Soma: {soma_total:.2f}")
+print(f"Média: {media_final:.2f}")

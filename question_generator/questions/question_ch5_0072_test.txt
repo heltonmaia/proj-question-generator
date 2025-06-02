@@ -1,0 +1,27 @@
+Teste 1:
+Input: 1 2 3 4 5 -1 -2 -3 -4 -5 0
+Output: Soma total: 0
+Média: 0.00
+Números pares: 5
+Números ímpares: 6
+
+Teste 2:
+Input: 10 20 30 40 50
+Output: Soma total: 150
+Média: 30.00
+Números pares: 5
+Números ímpares: 0
+
+Teste 3:
+Input: 1 3 5 7 9
+Output: Soma total: 25
+Média: 5.00
+Números pares: 0
+Números ímpares: 5
+
+Teste 4:
+Input: 
+Output: Soma total: 0
+Média: 0.00
+Números pares: 0
+Números ímpares: 0

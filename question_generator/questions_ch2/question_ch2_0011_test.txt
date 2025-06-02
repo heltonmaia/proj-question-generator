@@ -1,0 +1,14 @@
+Teste 1:
+Input: 8.5\n9.0\n9.5
+Output: Média: 9.00
+Classificação: A
+
+Teste 2:
+Input: 6.0\n7.5\n8.0
+Output: Média: 7.17
+Classificação: B
+
+Teste 3:
+Input: 2.0\n1.0\n2.5
+Output: Média: 1.83
+Classificação: F

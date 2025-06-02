@@ -1,0 +1,109 @@
+```
+#### Enunciado
+
+Você deve criar uma função Python, chamada `calcular_potencia_recursiva`, que calcula o resultado de uma base elevada a um expoente inteiro e não negativo, utilizando **exclusivamente o conceito de recursividade**. A função não deve utilizar operadores de potência (`**`) ou funções built-in como `pow()` ou `math.pow()`. Apenas operações básicas de multiplicação são permitidas no passo recursivo.
+
+A função receberá dois argumentos:
+*   `base` (do tipo `float`): O número a ser elevado.
+*   `expoente` (do tipo `int`): O número inteiro e não negativo que representa a potência.
+
+Considere as seguintes diretrizes para sua implementação recursiva:
+1.  **Condição Base:** Qualquer número elevado a 0 é 1.
+2.  **Passo Recursivo:** Para um expoente `n` maior que 0, `base^n` é igual a `base * base^(n-1)`.
+
+No programa principal, você deve ler a base e o expoente fornecidos pelo usuário em linhas separadas, chamar a função `calcular_potencia_recursiva` e imprimir o resultado formatado como 'Base^Expoente = Resultado'.
+
+#### Code Solução
+
+```python
+def calcular_potencia_recursiva(base: float, expoente: int) -> float:
+    """
+    Calcula a potência de um número (base elevada a um expoente)
+    utilizando recursividade.
+
+    Args:
+        base: O número a ser elevado. Pode ser um número inteiro ou de ponto flutuante.
+        expoente: O expoente inteiro e não negativo.
+
+    Returns:
+        O resultado da base elevada ao expoente. Retorna um float para compatibilidade.
+    """
+    if expoente == 0:
+        return 1.0
+    else:
+        # Passo recursivo: base * (base elevada a (expoente - 1))
+        return base * calcular_potencia_recursiva(base, expoente - 1)
+
+# Leitura da entrada
+base_input = float(input())
+expoente_input = int(input())
+
+# Chamada da função recursiva
+resultado = calcular_potencia_recursiva(base_input, expoente_input)
+
+# Formata a base para exibição (como inteiro se for um número inteiro exato)
+base_display = int(base_input) if base_input == int(base_input) else base_input
+
+# Formata o resultado para exibição (como inteiro se for um número inteiro exato)
+resultado_display = int(resultado) if resultado == int(resultado) else resultado
+
+# Imprime o resultado formatado
+print(f"{base_display}^{expoente_input} = {resultado_display}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+3
+2
+```
+Saída:
+```
+3^2 = 9
+```
+
+**Teste 2**
+Entrada:
+```
+2
+5
+```
+Saída:
+```
+2^5 = 32
+```
+
+**Teste 3**
+Entrada:
+```
+1
+10
+```
+Saída:
+```
+1^10 = 1
+```
+
+**Teste 4**
+Entrada:
+```
+7
+0
+```
+Saída:
+```
+7^0 = 1
+```
+
+**Teste 5**
+Entrada:
+```
+2.5
+2
+```
+Saída:
+```
+2.5^2 = 6.25
+```

@@ -1,0 +1,55 @@
+"""Desenvolva um programa Python que seja capaz de analisar uma lista de números de ponto flutuante e retornar estatísticas importantes sobre eles. O programa deve:
+
+1.  Definir uma função chamada `analisar_estatisticas` que aceita um único argumento: uma lista de números (`list[float]`).
+2.  Dentro desta função, calcule o menor valor, o maior valor e a média aritmética de todos os números presentes na lista.
+3.  A função deve retornar esses três valores em uma tupla na seguinte ordem: `(menor_valor, maior_valor, media)`.
+4.  Caso a lista de entrada esteja vazia, a função deve retornar uma tupla contendo `(None, None, None)` para indicar que não foi possível calcular as estatísticas.
+5.  O programa principal deve ler uma linha de entrada contendo números de ponto flutuante separados por espaços. Estes números devem ser convertidos para uma lista de `float`. Se a linha de entrada for vazia (apenas um ENTER), a lista resultante também deve ser vazia.
+6.  Em seguida, chame a função `analisar_estatisticas` com a lista criada.
+7.  Por fim, imprima os resultados formatados com duas casas decimais, ou uma mensagem apropriada se a lista estiver vazia.
+
+Exemplo de interação:
+Se a entrada for: `10.5 20.0 5.2 15.8`
+A saída esperada seria:
+```
+Menor: 5.20
+Maior: 20.00
+Média: 12.88
+```"""
+
+def analisar_estatisticas(numeros: list[float]) -> tuple[float, float, float] | tuple[None, None, None]:
+    """
+    Calcula o menor, o maior e a média de uma lista de números.
+
+    Args:
+        numeros: Uma lista de números de ponto flutuante.
+
+    Returns:
+        Uma tupla contendo (menor, maior, media) formatados com duas casas decimais,
+        ou (None, None, None) se a lista estiver vazia.
+    """
+    if not numeros:
+        return (None, None, None)
+
+    menor = min(numeros)
+    maior = max(numeros)
+    media = sum(numeros) / len(numeros)
+
+    return (menor, maior, media)
+
+# Leitura da entrada
+# A entrada será uma linha de números separados por espaço
+input_str = input()
+if input_str.strip() == "":
+    lista_numeros = []
+else:
+    lista_numeros = [float(x) for x in input_str.split()]
+
+menor_val, maior_val, media_val = analisar_estatisticas(lista_numeros)
+
+if menor_val is None:
+    print("A lista está vazia.")
+else:
+    print(f"Menor: {menor_val:.2f}")
+    print(f"Maior: {maior_val:.2f}")
+    print(f"Média: {media_val:.2f}")

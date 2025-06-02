@@ -1,0 +1,19 @@
+Teste 1:
+Input: 25.0\nC
+Output: A temperatura de 25.00°C é 77.00°F.
+
+Teste 2:
+Input: 68.0\nF
+Output: A temperatura de 68.00°F é 20.00°C.
+
+Teste 3:
+Input: 0.0\nC
+Output: A temperatura de 0.00°C é 32.00°F.
+
+Teste 4:
+Input: 212.0\nf
+Output: A temperatura de 212.00°F é 100.00°C.
+
+Teste 5:
+Input: -40.0\nC
+Output: A temperatura de -40.00°C é -40.00°F.

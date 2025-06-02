@@ -1,0 +1,23 @@
+Teste 1:
+Input: 3\n23.5\n24.0\n22.8
+Output: Temperatura Média: 23.43°C
+Temperatura Máxima: 24.00°C
+Temperatura Mínima: 22.80°C
+
+Teste 2:
+Input: 4\n10.0\n-5.0\n0.0\n15.0
+Output: Temperatura Média: 5.00°C
+Temperatura Máxima: 15.00°C
+Temperatura Mínima: -5.00°C
+
+Teste 3:
+Input: 1\n30.0
+Output: Temperatura Média: 30.00°C
+Temperatura Máxima: 30.00°C
+Temperatura Mínima: 30.00°C
+
+Teste 4:
+Input: 0
+Output: Temperatura Média: 0.00°C
+Temperatura Máxima: 0.00°C
+Temperatura Mínima: 0.00°C

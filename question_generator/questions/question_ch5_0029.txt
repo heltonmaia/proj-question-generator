@@ -1,0 +1,141 @@
+#### Enunciado
+
+Você foi contratado para desenvolver um sistema que realiza uma análise estatística básica em uma lista de números inteiros. Sua tarefa é criar uma função em Python que receba uma lista de números e retorne informações específicas sobre eles.
+
+A função deve ser chamada `analisar_lista_numeros` e precisa calcular e retornar os seguintes quatro valores, nesta ordem, como uma tupla:
+
+1.  A soma de todos os números **pares** presentes na lista.
+2.  A contagem total de números **ímpares** na lista.
+3.  O menor número da lista.
+4.  O maior número da lista.
+
+**Considerações:**
+
+*   Caso a lista de entrada seja vazia, a função deve retornar uma tupla `(0, 0, None, None)` para indicar que não há números para processar.
+*   Utilize a estrutura de `funções com retorno` e `múltiplos valores de retorno` conforme explicado no Capítulo 5 do material de estudo.
+*   Considere o uso de `type hints` e `docstrings` para documentar sua função e melhorar a clareza do código.
+
+#### Code Solução
+
+```python
+def analisar_lista_numeros(numeros: list[int]) -> tuple[int, int, int | None, int | None]:
+    """
+    Analisa uma lista de números inteiros, calculando a soma dos pares,
+    a contagem dos ímpares, o menor e o maior número.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Returns:
+        Uma tupla contendo:
+        - A soma dos números pares.
+        - A contagem dos números ímpares.
+        - O menor número da lista (None se a lista for vazia).
+        - O maior número da lista (None se a lista for vazia).
+    """
+    if not numeros:
+        return (0, 0, None, None)
+
+    soma_pares = 0
+    contagem_impares = 0
+
+    for num in numeros:
+        if num % 2 == 0:
+            soma_pares += num
+        else:
+            contagem_impares += 1
+    
+    menor_numero = min(numeros)
+    maior_numero = max(numeros)
+
+    return (soma_pares, contagem_impares, menor_numero, maior_numero)
+
+# Exemplo de uso (para demonstração, não faz parte da solução final)
+# lista1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# soma_p, count_i, menor, maior = analisar_lista_numeros(lista1)
+# print(f"Soma dos pares: {soma_p}")
+# print(f"Contagem dos ímpares: {count_i}")
+# print(f"Menor número: {menor}")
+# print(f"Maior número: {maior}")
+
+# lista_vazia = []
+# soma_p_vazia, count_i_vazia, menor_vazia, maior_vazia = analisar_lista_numeros(lista_vazia)
+# print(f"Soma dos pares (vazia): {soma_p_vazia}")
+# print(f"Contagem dos ímpares (vazia): {count_i_vazia}")
+# print(f"Menor número (vazia): {menor_vazia}")
+# print(f"Maior número (vazia): {maior_vazia}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada (Simulada para a função):
+```python
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+soma_pares, contagem_impares, menor, maior = analisar_lista_numeros(lista)
+print(f"Soma dos pares: {soma_pares}")
+print(f"Contagem dos ímpares: {contagem_impares}")
+print(f"Menor número: {menor}")
+print(f"Maior número: {maior}")
+```
+Saída:
+```
+Soma dos pares: 30
+Contagem dos ímpares: 5
+Menor número: 1
+Maior número: 10
+```
+
+**Teste 2**
+Entrada (Simulada para a função):
+```python
+lista = [-5, -2, 0, 7, 12, -10]
+soma_pares, contagem_impares, menor, maior = analisar_lista_numeros(lista)
+print(f"Soma dos pares: {soma_pares}")
+print(f"Contagem dos ímpares: {contagem_impares}")
+print(f"Menor número: {menor}")
+print(f"Maior número: {maior}")
+```
+Saída:
+```
+Soma dos pares: 0
+Contagem dos ímpares: 2
+Menor número: -10
+Maior número: 12
+```
+
+**Teste 3**
+Entrada (Simulada para a função):
+```python
+lista = []
+soma_pares, contagem_impares, menor, maior = analisar_lista_numeros(lista)
+print(f"Soma dos pares: {soma_pares}")
+print(f"Contagem dos ímpares: {contagem_impares}")
+print(f"Menor número: {menor}")
+print(f"Maior número: {maior}")
+```
+Saída:
+```
+Soma dos pares: 0
+Contagem dos ímpares: 0
+Menor número: None
+Maior número: None
+```
+
+**Teste 4**
+Entrada (Simulada para a função):
+```python
+lista = [100, 200, 300]
+soma_pares, contagem_impares, menor, maior = analisar_lista_numeros(lista)
+print(f"Soma dos pares: {soma_pares}")
+print(f"Contagem dos ímpares: {contagem_impares}")
+print(f"Menor número: {menor}")
+print(f"Maior número: {maior}")
+```
+Saída:
+```
+Soma dos pares: 600
+Contagem dos ímpares: 0
+Menor número: 100
+Maior número: 300
+```

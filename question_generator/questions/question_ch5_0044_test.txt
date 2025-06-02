@@ -1,0 +1,23 @@
+Teste 1:
+Input: 10 5 8 -2 1
+Output: Soma da lista: 22
+Números pares: 3
+Números ímpares: 2
+Menor valor: -2
+Maior valor: 10
+
+Teste 2:
+Input: -1 -5 -10 -3
+Output: Soma da lista: -19
+Números pares: 1
+Números ímpares: 3
+Menor valor: -10
+Maior valor: -1
+
+Teste 3:
+Input: 7
+Output: Soma da lista: 7
+Números pares: 0
+Números ímpares: 1
+Menor valor: 7
+Maior valor: 7

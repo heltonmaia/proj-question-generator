@@ -1,0 +1,34 @@
+Teste 1:
+Input: 10 2.5 -5 0 7 -1.5
+Output: Soma dos números: 13.00
+Média dos números: 2.17
+Quantidade de números positivos: 3
+Quantidade de números negativos: 2
+
+Teste 2:
+Input: 1 2 3 4 5
+Output: Soma dos números: 15.00
+Média dos números: 3.00
+Quantidade de números positivos: 5
+Quantidade de números negativos: 0
+
+Teste 3:
+Input: -10 -20.5 -30
+Output: Soma dos números: -60.50
+Média dos números: -20.17
+Quantidade de números positivos: 0
+Quantidade de números negativos: 3
+
+Teste 4:
+Input: 0
+Output: Soma dos números: 0.00
+Média dos números: 0.00
+Quantidade de números positivos: 0
+Quantidade de números negativos: 0
+
+Teste 5:
+Input: 
+Output: Soma dos números: 0.00
+Média dos números: 0.00
+Quantidade de números positivos: 0
+Quantidade de números negativos: 0

@@ -1,0 +1,135 @@
+#### Enunciado
+
+Desenvolva uma função em Python chamada `analisar_notas` que receba uma lista de números decimais (representando notas de alunos) como argumento.
+
+A função deve realizar as seguintes análises e retornar seus resultados em uma tupla, na ordem especificada:
+
+1.  **Média das notas:** A média aritmética de todas as notas na lista.
+2.  **Maior nota:** O valor da maior nota presente na lista.
+3.  **Menor nota:** O valor da menor nota presente na lista.
+4.  **Status de aprovação geral:** Um valor booleano (`True` ou `False`) indicando se *todas* as notas na lista são iguais ou superiores a `7.0` (o critério de aprovação).
+
+**Importante:** Se a lista de notas estiver vazia, a função deve retornar uma tupla `(0.0, None, None, False)` para evitar erros de cálculo e indicar que não há notas para analisar.
+
+O programa principal deve ler uma linha de entrada contendo as notas separadas por vírgulas (ex: "8.5,9.0,7.0") e, em seguida, chamar a função `analisar_notas` com a lista de notas processada. Por fim, o programa deve imprimir os resultados de forma clara e formatada, arredondando a média, maior e menor nota para duas casas decimais, quando aplicável.
+
+#### Code Solução
+
+```python
+from typing import List, Tuple, Optional
+
+def analisar_notas(notas: List[float]) -> Tuple[float, Optional[float], Optional[float], bool]:
+    """
+    Analisa uma lista de notas, calculando média, maior nota, menor nota e status de aprovação geral.
+
+    Args:
+        notas (List[float]): Uma lista de números decimais representando notas.
+
+    Returns:
+        Tuple[float, Optional[float], Optional[float], bool]: Uma tupla contendo:
+            - A média das notas (float).
+            - A maior nota (float ou None se a lista for vazia).
+            - A menor nota (float ou None se a lista for vazia).
+            - True se todas as notas forem >= 7.0, False caso contrário (ou se a lista for vazia).
+    """
+    if not notas:
+        return (0.0, None, None, False)
+
+    media = sum(notas) / len(notas)
+    maior_nota = max(notas)
+    menor_nota = min(notas)
+    todas_aprovadas = all(nota >= 7.0 for nota in notas)
+
+    return (media, maior_nota, menor_nota, todas_aprovadas)
+
+# --- Programa Principal ---
+input_line = input()
+if input_line.strip() == "":
+    raw_notas = []
+else:
+    # Processa a string de entrada para obter uma lista de floats
+    grades_str = [g.strip() for g in input_line.split(',')]
+    notas_processadas = [float(g) for g in grades_str if g]
+
+media, maior, menor, aprovado = analisar_notas(notas_processadas)
+
+print(f"Média: {media:.2f}")
+if maior is not None:
+    print(f"Maior nota: {maior:.2f}")
+else:
+    print(f"Maior nota: {maior}") # Imprime 'None'
+
+if menor is not None:
+    print(f"Menor nota: {menor:.2f}")
+else:
+    print(f"Menor nota: {menor}") # Imprime 'None'
+
+print(f"Todas aprovadas: {aprovado}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+8.5,9.0,7.0,6.5,10.0
+```
+Saída:
+```
+Média: 8.20
+Maior nota: 10.00
+Menor nota: 6.50
+Todas aprovadas: False
+```
+
+**Teste 2**
+Entrada:
+```
+7.0,8.0,9.5,10.0
+```
+Saída:
+```
+Média: 8.63
+Maior nota: 10.00
+Menor nota: 7.00
+Todas aprovadas: True
+```
+
+**Teste 3**
+Entrada:
+```
+
+```
+Saída:
+```
+Média: 0.00
+Maior nota: None
+Menor nota: None
+Todas aprovadas: False
+```
+
+**Teste 4**
+Entrada:
+```
+5.0
+```
+Saída:
+```
+Média: 5.00
+Maior nota: 5.00
+Menor nota: 5.00
+Todas aprovadas: False
+```
+
+**Teste 5**
+Entrada:
+```
+10.0
+```
+Saída:
+```
+Média: 10.00
+Maior nota: 10.00
+Menor nota: 10.00
+Todas aprovadas: True
+```

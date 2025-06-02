@@ -1,0 +1,117 @@
+```python
+# Enunciado
+Crie uma função em Python chamada `analisar_desempenho_aluno` que receba como parâmetro uma lista de notas de um aluno (valores de ponto flutuante). Esta função deve calcular a média aritmética dessas notas e, com base na média, determinar a situação do aluno. A situação será "Aprovado" se a média for igual ou superior a 7.0, e "Reprovado" caso contrário.
+
+A função `analisar_desempenho_aluno` deve retornar dois valores:
+1.  A média calculada (um número de ponto flutuante).
+2.  A situação do aluno (uma string: "Aprovado" ou "Reprovado").
+
+Além disso, a função deve tratar o caso em que a lista de notas esteja vazia. Se a lista for vazia, a função deve retornar `0.0` para a média e a string "Sem notas" para a situação.
+
+No programa principal, demonstre o uso da função chamando-a com diferentes listas de notas e imprimindo a média e a situação retornadas, formatando a média com duas casas decimais.
+
+# Code Solução
+
+```python
+from typing import List, Tuple
+
+def analisar_desempenho_aluno(notas: List[float]) -> Tuple[float, str]:
+    """
+    Calcula a média das notas de um aluno e determina sua situação.
+
+    Args:
+        notas (List[float]): Uma lista de notas do aluno (números de ponto flutuante).
+
+    Returns:
+        Tuple[float, str]: Uma tupla contendo a média das notas e a situação do aluno.
+                           Retorna (0.0, "Sem notas") se a lista de notas for vazia.
+    """
+    if not notas:
+        return 0.0, "Sem notas"
+
+    media = sum(notas) / len(notas)
+    
+    if media >= 7.0:
+        situacao = "Aprovado"
+    else:
+        situacao = "Reprovado"
+    
+    return media, situacao
+
+if __name__ == "__main__":
+    # Exemplo 1: Aluno aprovado
+    notas_aluno1 = [8.5, 9.0, 7.0, 7.5]
+    media1, situacao1 = analisar_desempenho_aluno(notas_aluno1)
+    print(f"Notas: {notas_aluno1}")
+    print(f"Média: {media1:.2f}, Situação: {situacao1}")
+
+    print("-" * 30)
+
+    # Exemplo 2: Aluno reprovado
+    notas_aluno2 = [5.0, 6.5, 4.0, 6.0]
+    media2, situacao2 = analisar_desempenho_aluno(notas_aluno2)
+    print(f"Notas: {notas_aluno2}")
+    print(f"Média: {media2:.2f}, Situação: {situacao2}")
+
+    print("-" * 30)
+
+    # Exemplo 3: Lista de notas vazia
+    notas_aluno3 = []
+    media3, situacao3 = analisar_desempenho_aluno(notas_aluno3)
+    print(f"Notas: {notas_aluno3}")
+    print(f"Média: {media3:.2f}, Situação: {situacao3}")
+
+    print("-" * 30)
+
+    # Exemplo 4: Notas com aprovação exata na média
+    notas_aluno4 = [7.0, 7.0, 7.0]
+    media4, situacao4 = analisar_desempenho_aluno(notas_aluno4)
+    print(f"Notas: {notas_aluno4}")
+    print(f"Média: {media4:.2f}, Situação: {situacao4}")
+```
+
+# Testes
+
+**Teste 1**
+Entrada (considerando que a lista `notas_aluno1` é o input para a função):
+```
+[8.5, 9.0, 7.0, 7.5]
+```
+Saída:
+```
+Notas: [8.5, 9.0, 7.0, 7.5]
+Média: 8.00, Situação: Aprovado
+```
+
+**Teste 2**
+Entrada (considerando que a lista `notas_aluno2` é o input para a função):
+```
+[5.0, 6.5, 4.0, 6.0]
+```
+Saída:
+```
+Notas: [5.0, 6.5, 4.0, 6.0]
+Média: 5.38, Situação: Reprovado
+```
+
+**Teste 3**
+Entrada (considerando que a lista `notas_aluno3` é o input para a função):
+```
+[]
+```
+Saída:
+```
+Notas: []
+Média: 0.00, Situação: Sem notas
+```
+
+**Teste 4**
+Entrada (considerando que a lista `notas_aluno4` é o input para a função):
+```
+[7.0, 7.0, 7.0]
+```
+Saída:
+```
+Notas: [7.0, 7.0, 7.0]
+Média: 7.00, Situação: Aprovado
+```

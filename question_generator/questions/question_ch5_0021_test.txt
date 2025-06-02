@@ -1,0 +1,14 @@
+Teste 1:
+Input: 1 2 3 4 5 6
+Output: Soma total dos números: 21
+Quantidade de números pares: 3
+
+Teste 2:
+Input: 10 15 20 -5 0
+Output: Soma total dos números: 40
+Quantidade de números pares: 3
+
+Teste 3:
+Input: -2 -4 -6 -8
+Output: Soma total dos números: -20
+Quantidade de números pares: 4

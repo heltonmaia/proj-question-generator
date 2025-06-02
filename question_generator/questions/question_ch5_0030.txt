@@ -1,0 +1,110 @@
+```
+### Enunciado
+
+Você foi contratado para criar um sistema de análise de desempenho de alunos para uma pequena escola. Sua primeira tarefa é desenvolver uma função em Python que receba uma lista de notas de um aluno e calcule algumas estatísticas importantes sobre essas notas.
+
+Crie uma função chamada `analisar_notas` que aceite um parâmetro: `notas` (uma lista de números decimais representando as notas de um aluno).
+
+A função deve calcular e retornar os seguintes valores, nesta ordem, como uma tupla:
+1.  A média das notas.
+2.  A maior nota da lista.
+3.  A menor nota da lista.
+
+Se a lista de notas estiver vazia, a função deve retornar `(0.0, 0.0, 0.0)` para indicar que não há notas para analisar.
+
+No programa principal, você deve:
+*   Solicitar ao usuário que digite as notas, separadas por vírgulas (ex: `7.5, 8.0, 6.0`).
+*   Converter a entrada do usuário em uma lista de números decimais.
+*   Chamar a função `analisar_notas` com a lista processada.
+*   Imprimir os resultados no formato especificado nos exemplos de teste, com todos os valores numéricos formatados para duas casas decimais.
+
+Utilize docstrings para documentar a função e type hints para os parâmetros e o retorno da função para maior clareza do código.
+
+### Code Solução
+
+```python
+def analisar_notas(notas: list[float]) -> tuple[float, float, float]:
+    """
+    Calcula a média, a maior e a menor nota de uma lista de notas.
+
+    Args:
+        notas (list[float]): Uma lista de números decimais (notas).
+
+    Returns:
+        tuple[float, float, float]: Uma tupla contendo (media, maior_nota, menor_nota).
+                                     Retorna (0.0, 0.0, 0.0) se a lista estiver vazia.
+    """
+    if not notas:
+        return (0.0, 0.0, 0.0)
+
+    media = sum(notas) / len(notas)
+    maior_nota = max(notas)
+    menor_nota = min(notas)
+
+    return (media, maior_nota, menor_nota)
+
+# Programa principal
+entrada_notas_str = input()
+
+if entrada_notas_str.strip() == "":
+    notas_processadas = []
+else:
+    # Converte a string de entrada em uma lista de floats
+    notas_processadas = [float(nota.strip()) for nota in entrada_notas_str.split(',')]
+
+media, maior, menor = analisar_notas(notas_processadas)
+
+print(f"Média das notas: {media:.2f}")
+print(f"Maior nota: {maior:.2f}")
+print(f"Menor nota: {menor:.2f}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+7.5, 8.0, 6.0, 9.5, 7.0
+```
+Saída:
+```
+Média das notas: 7.60
+Maior nota: 9.50
+Menor nota: 6.00
+```
+
+**Teste 2**
+Entrada:
+```
+10.0, 10.0, 10.0
+```
+Saída:
+```
+Média das notas: 10.00
+Maior nota: 10.00
+Menor nota: 10.00
+```
+
+**Teste 3**
+Entrada:
+```
+5.2
+```
+Saída:
+```
+Média das notas: 5.20
+Maior nota: 5.20
+Menor nota: 5.20
+```
+
+**Teste 4**
+Entrada:
+```
+
+```
+Saída:
+```
+Média das notas: 0.00
+Maior nota: 0.00
+Menor nota: 0.00
+```

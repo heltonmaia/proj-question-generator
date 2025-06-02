@@ -1,0 +1,25 @@
+"""Crie um programa que calcula a média final de um aluno com base em duas notas (N1 e N2). O programa deve solicitar ao usuário que insira as duas notas, que podem ser números de ponto flutuante. Em seguida, calcule a média aritmética dessas duas notas e classifique o aluno de acordo com as seguintes regras:
+
+*   Se a média for **maior ou igual a 7.0**, o aluno está "Aprovado".
+*   Se a média for **entre 5.0 (inclusive) e 6.9 (inclusive)**, o aluno está "Em Recuperação".
+*   Se a média for **menor que 5.0**, o aluno está "Reprovado".
+
+O programa deve imprimir a média final (formatada com uma casa decimal) e a classificação do aluno."""
+
+# Solicita as duas notas ao usuário
+nota1 = float(input())
+nota2 = float(input())
+
+# Calcula a média aritmética
+media = (nota1 + nota2) / 2
+
+# Imprime a média final formatada
+print(f"Média: {media:.1f}")
+
+# Classifica o aluno com base na média
+if media >= 7.0:
+    print("Classificação: Aprovado")
+elif media >= 5.0:
+    print("Classificação: Em Recuperação")
+else:
+    print("Classificação: Reprovado")

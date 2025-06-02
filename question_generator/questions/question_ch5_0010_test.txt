@@ -1,0 +1,59 @@
+Teste 1:
+Input: 1\n5\n10\n4
+Output: --- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Digite a base do triângulo: Digite a altura do triângulo: A área do triângulo é: 25.00
+--- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Programa encerrado.
+
+Teste 2:
+Input: 2\n3\n4
+Output: --- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Digite o raio do círculo: A área do círculo é: 28.27
+--- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Programa encerrado.
+
+Teste 3:
+Input: 3\n4\n6\n4
+Output: --- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Digite o comprimento do retângulo: Digite a largura do retângulo: A área do retângulo é: 24.00
+--- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Programa encerrado.
+
+Teste 4:
+Input: 5\n4
+Output: --- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Opção inválida. Por favor, escolha uma opção entre 1 e 4.
+--- Calculadora de Área de Formas Geométricas ---
+1. Triângulo
+2. Círculo
+3. Retângulo
+4. Sair
+Escolha uma opção: Programa encerrado.

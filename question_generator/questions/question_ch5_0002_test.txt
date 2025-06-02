@@ -1,0 +1,17 @@
+Teste 1:
+Input: 10.0 20.0 30.0 40.0 50.0
+Output: Menor valor: 10.0
+Maior valor: 50.0
+Média aritmética: 30.00
+
+Teste 2:
+Input: 5.5 -2.0 10.0 0.0 1.5
+Output: Menor valor: -2.0
+Maior valor: 10.0
+Média aritmética: 3.00
+
+Teste 3:
+Input: 7.77
+Output: Menor valor: 7.77
+Maior valor: 7.77
+Média aritmética: 7.77

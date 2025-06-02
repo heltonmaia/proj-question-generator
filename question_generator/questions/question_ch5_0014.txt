@@ -1,0 +1,78 @@
+```markdown
+### Enunciado
+
+Crie um programa Python que demonstre o uso de funções com múltiplos valores de retorno. Seu programa deve:
+
+1.  **Definir uma Função:** Crie uma função chamada `calcular_area_e_perimetro_retangulo` que aceite dois parâmetros de ponto flutuante: `comprimento` e `largura`.
+2.  **Cálculos:** Dentro dessa função, calcule a **área** (comprimento \* largura) e o **perímetro** (2 \* (comprimento + largura)) do retângulo.
+3.  **Retorno Múltiplo:** A função deve retornar ambos os valores calculados (área e perímetro) como uma tupla.
+4.  **Entrada do Usuário:** No programa principal, solicite ao usuário que digite o comprimento e a largura do retângulo. Cada valor deve ser lido em uma linha separada e convertido para `float`.
+5.  **Chamada e Desempacotamento:** Chame a função `calcular_area_e_perimetro_retangulo` com os valores fornecidos pelo usuário e, em seguida, desempacote os resultados da tupla em duas variáveis distintas.
+6.  **Exibição:** Imprima a área e o perímetro calculados, formatando-os para exibição com duas casas decimais e acompanhados de mensagens descritivas.
+
+### Code Solução
+
+```python
+def calcular_area_e_perimetro_retangulo(comprimento: float, largura: float) -> tuple[float, float]:
+    """
+    Calcula a área e o perímetro de um retângulo.
+
+    Args:
+        comprimento (float): O comprimento do retângulo.
+        largura (float): A largura do retângulo.
+
+    Returns:
+        tuple[float, float]: Uma tupla contendo a área e o perímetro do retângulo.
+    """
+    area = comprimento * largura
+    perimetro = 2 * (comprimento + largura)
+    return area, perimetro
+
+# Programa principal
+comprimento_input = float(input())
+largura_input = float(input())
+
+area_resultado, perimetro_resultado = calcular_area_e_perimetro_retangulo(comprimento_input, largura_input)
+
+print(f"Área do retângulo: {area_resultado:.2f}")
+print(f"Perímetro do retângulo: {perimetro_resultado:.2f}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+5.0
+10.0
+```
+Saída:
+```
+Área do retângulo: 50.00
+Perímetro do retângulo: 30.00
+```
+
+**Teste 2**
+Entrada:
+```
+3.5
+7.2
+```
+Saída:
+```
+Área do retângulo: 25.20
+Perímetro do retângulo: 21.40
+```
+
+**Teste 3**
+Entrada:
+```
+12
+4
+```
+Saída:
+```
+Área do retângulo: 48.00
+Perímetro do retângulo: 32.00
+```
+```

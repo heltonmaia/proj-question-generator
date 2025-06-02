@@ -1,0 +1,23 @@
+Teste 1:
+Input: Python e divertido!
+Output: Total de letras: 16
+Vogais: 6
+Consoantes: 10
+
+Teste 2:
+Input: Ola Mundo!
+Output: Total de letras: 8
+Vogais: 4
+Consoantes: 4
+
+Teste 3:
+Input: 123 @#$!
+Output: Total de letras: 0
+Vogais: 0
+Consoantes: 0
+
+Teste 4:
+Input: AULA de FUNCOES
+Output: Total de letras: 13
+Vogais: 7
+Consoantes: 6

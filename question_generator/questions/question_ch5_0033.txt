@@ -1,0 +1,128 @@
+```markdown
+### Enunciado
+
+Você foi encarregado de desenvolver uma ferramenta para analisar um conjunto de números. Para isso, você deve criar uma função Python que receba uma lista de números inteiros e retorne informações essenciais sobre essa lista.
+
+A função deve ser chamada `analisar_conjunto_numeros` e deve cumprir os seguintes requisitos:
+
+1.  **Parâmetro de Entrada:** Uma lista de números inteiros (`list[int]`).
+2.  **Valores de Retorno:** A função deve retornar uma tupla contendo quatro valores, nesta ordem:
+    *   O **maior** número da lista.
+    *   O **menor** número da lista.
+    *   A **quantidade de números pares** na lista.
+    *   A **quantidade de números ímpares** na lista.
+3.  **Tratamento de Lista Vazia:** Se a lista de entrada estiver vazia, a função deve retornar `(None, None, 0, 0)`.
+
+Seu programa deve ler uma linha de entrada contendo números inteiros separados por vírgulas (ex: `10, 3, 7, 20, 5, 8`), converter essa entrada em uma lista de inteiros, chamar a função `analisar_conjunto_numeros` com essa lista e, em seguida, imprimir os resultados formatados.
+
+Certifique-se de que sua função utilize type hints e docstrings, conforme as boas práticas de programação Python.
+
+### Code Solução
+
+```python
+from typing import Tuple, Optional
+
+def analisar_conjunto_numeros(numeros: list[int]) -> Tuple[Optional[int], Optional[int], int, int]:
+    """
+    Analisa uma lista de números inteiros para encontrar o maior, o menor,
+    a quantidade de pares e a quantidade de ímpares.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Returns:
+        Uma tupla contendo (maior_numero, menor_numero, quantidade_pares, quantidade_impares).
+        Retorna (None, None, 0, 0) se a lista estiver vazia.
+    """
+    if not numeros:
+        return (None, None, 0, 0)
+
+    maior = numeros[0]
+    menor = numeros[0]
+    pares = 0
+    impares = 0
+
+    for num in numeros:
+        if num > maior:
+            maior = num
+        if num < menor:
+            menor = num
+
+        if num % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+            
+    return (maior, menor, pares, impares)
+
+# --- Programa Principal ---
+# Lê a entrada como uma string de números separados por vírgula
+entrada_str = input()
+
+# Converte a string de entrada em uma lista de inteiros
+# Garante que números_input seja uma lista vazia se a entrada for uma string vazia
+numeros_input = [int(x.strip()) for x in entrada_str.split(',') if x.strip()]
+
+# Chama a função para analisar a lista
+maior_num, menor_num, pares_count, impares_count = analisar_conjunto_numeros(numeros_input)
+
+# Imprime os resultados
+print(f"Maior número: {maior_num}")
+print(f"Menor número: {menor_num}")
+print(f"Quantidade de pares: {pares_count}")
+print(f"Quantidade de ímpares: {impares_count}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+10, 3, 7, 20, 5, 8
+```
+Saída:
+```
+Maior número: 20
+Menor número: 3
+Quantidade de pares: 3
+Quantidade de ímpares: 3
+```
+
+**Teste 2**
+Entrada:
+```
+-1, -5, 0, 2, 4
+```
+Saída:
+```
+Maior número: 4
+Menor número: -5
+Quantidade de pares: 3
+Quantidade de ímpares: 2
+```
+
+**Teste 3**
+Entrada:
+```
+7
+```
+Saída:
+```
+Maior número: 7
+Menor número: 7
+Quantidade de pares: 0
+Quantidade de ímpares: 1
+```
+
+**Teste 4**
+Entrada:
+```
+```
+Saída:
+```
+Maior número: None
+Menor número: None
+Quantidade de pares: 0
+Quantidade de ímpares: 0
+```
+```

@@ -1,0 +1,43 @@
+Teste 1:
+Input: Maçã\nLeite\nPão\nsim\nLeite
+Output: Por favor, adicione três itens à sua lista de compras:
+Item 1: Maçã
+Item 2: Leite
+Item 3: Pão
+
+Sua lista de compras atual: ['Maçã', 'Leite', 'Pão']
+
+Deseja remover algum item da lista? (sim/nao): sim
+Qual item você deseja remover?: Leite
+'Leite' foi removido da lista.
+
+Lista de compras final: ['Maçã', 'Pão']
+
+Teste 2:
+Input: Arroz\nFeijão\nBatata\nsim\nCenoura
+Output: Por favor, adicione três itens à sua lista de compras:
+Item 1: Arroz
+Item 2: Feijão
+Item 3: Batata
+
+Sua lista de compras atual: ['Arroz', 'Feijão', 'Batata']
+
+Deseja remover algum item da lista? (sim/nao): sim
+Qual item você deseja remover?: Cenoura
+'Cenoura' não encontrado na lista.
+
+Lista de compras final: ['Arroz', 'Feijão', 'Batata']
+
+Teste 3:
+Input: Abacaxi\nManga\nUva\nnao
+Output: Por favor, adicione três itens à sua lista de compras:
+Item 1: Abacaxi
+Item 2: Manga
+Item 3: Uva
+
+Sua lista de compras atual: ['Abacaxi', 'Manga', 'Uva']
+
+Deseja remover algum item da lista? (sim/nao): nao
+Nenhum item será removido.
+
+Lista de compras final: ['Abacaxi', 'Manga', 'Uva']

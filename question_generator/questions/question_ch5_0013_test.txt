@@ -1,0 +1,24 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma dos números: 15
+Média dos números: 3.00
+
+Teste 2:
+Input: 10 20 30 40 50
+Output: Soma dos números: 150
+Média dos números: 30.00
+
+Teste 3:
+Input: 7
+Output: Soma dos números: 7
+Média dos números: 7.00
+
+Teste 4:
+Input: -1 0 10 -5 15
+Output: Soma dos números: 19
+Média dos números: 3.80
+
+Teste 5:
+Input: 
+Output: Soma dos números: 0
+Média dos números: 0.00

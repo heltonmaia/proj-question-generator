@@ -1,0 +1,23 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma total: 15
+Quantidade de pares: 2
+Quantidade de ímpares: 3
+
+Teste 2:
+Input: -10 -5 0 5 10
+Output: Soma total: 0
+Quantidade de pares: 3
+Quantidade de ímpares: 2
+
+Teste 3:
+Input: 7
+Output: Soma total: 7
+Quantidade de pares: 0
+Quantidade de ímpares: 1
+
+Teste 4:
+Input: 2 4 6 8
+Output: Soma total: 20
+Quantidade de pares: 4
+Quantidade de ímpares: 0

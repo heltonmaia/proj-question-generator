@@ -1,0 +1,103 @@
+```
+### Enunciado
+
+Sua tarefa é implementar um programa Python que analise uma lista de temperaturas.
+
+1.  **Função `analisar_temperaturas`**: Crie uma função chamada `analisar_temperaturas` que aceita um argumento:
+    *   `temperaturas`: Uma lista de números de ponto flutuante (`float`) representando as temperaturas.
+
+    Esta função deve retornar uma **tupla** contendo três valores, nesta ordem:
+    *   A temperatura mais alta (`float`).
+    *   A temperatura mais baixa (`float`).
+    *   A temperatura média (`float`), calculada como a soma de todas as temperaturas dividida pelo número total de temperaturas.
+
+    **Caso Especial**: Se a lista de `temperaturas` estiver vazia, a função deve retornar `(None, None, 0.0)`.
+
+2.  **Programa Principal**: No programa principal, você deve:
+    *   Solicitar ao usuário que insira uma série de temperaturas em uma única linha, separadas por espaços (ex: `25.5 28.0 22.1`).
+    *   Converter a entrada do usuário em uma lista de números de ponto flutuante.
+    *   Chamar a função `analisar_temperaturas` com a lista gerada.
+    *   Imprimir os resultados obtidos da função, formatando a temperatura média para duas casas decimais. Utilize as mensagens exatas como nos exemplos de teste.
+
+### Code Solução
+
+```python
+def analisar_temperaturas(temperaturas: list[float]) -> tuple[float | None, float | None, float]:
+    """
+    Analisa uma lista de temperaturas, retornando a máxima, mínima e média.
+
+    Args:
+        temperaturas: Uma lista de números de ponto flutuante representando temperaturas.
+
+    Returns:
+        Uma tupla contendo (temperatura_maxima, temperatura_minima, temperatura_media).
+        Retorna (None, None, 0.0) se a lista estiver vazia.
+    """
+    if not temperaturas:
+        return (None, None, 0.0)
+
+    maxima = max(temperaturas)
+    minima = min(temperaturas)
+    media = sum(temperaturas) / len(temperaturas)
+
+    return (maxima, minima, media)
+
+# Programa Principal
+entrada_usuario = input()
+lista_temperaturas = []
+
+# Converte a string de entrada em uma lista de floats.
+# .split() sem argumentos lida corretamente com strings vazias ou apenas espaços.
+if entrada_usuario:
+    lista_temperaturas = [float(temp) for temp in entrada_usuario.split()]
+
+maxima, minima, media = analisar_temperaturas(lista_temperaturas)
+
+if maxima is None and minima is None:
+    print("Nenhum dado para análise.")
+else:
+    print(f"Máxima: {maxima}, Mínima: {minima}, Média: {media:.2f}")
+
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+25.5 28.0 22.1 24.3
+```
+Saída:
+```
+Máxima: 28.0, Mínima: 22.1, Média: 25.00
+```
+
+**Teste 2**
+Entrada:
+```
+15.0
+```
+Saída:
+```
+Máxima: 15.0, Mínima: 15.0, Média: 15.00
+```
+
+**Teste 3**
+Entrada:
+```
+30.0 32.5 29.8 31.0 33.1
+```
+Saída:
+```
+Máxima: 33.1, Mínima: 29.8, Média: 31.28
+```
+
+**Teste 4**
+Entrada:
+```
+
+```
+Saída:
+```
+Nenhum dado para análise.
+```

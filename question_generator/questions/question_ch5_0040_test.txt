@@ -1,0 +1,35 @@
+Teste 1:
+Input: 1\n5\n10
+Output: --- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite a base do triângulo: Digite a altura do triângulo: A área do triângulo é: 25.00
+
+Teste 2:
+Input: 2\n3
+Output: --- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite o raio do círculo: A área do círculo é: 28.27
+
+Teste 3:
+Input: 3\n4\n6
+Output: --- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Digite o comprimento do retângulo: Digite a largura do retângulo: A área do retângulo é: 24.00
+
+Teste 4:
+Input: 4
+Output: --- Calculadora de Área de Formas Geométricas ---
+1: Calcular a área de um triângulo (base e altura)
+2: Calcular a área de um círculo (raio)
+3: Calcular a área de um retângulo (comprimento e largura)
+4: Sair do programa
+Escolha uma opção: Programa encerrado.

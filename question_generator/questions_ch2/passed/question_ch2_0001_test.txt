@@ -1,0 +1,7 @@
+Teste 1:
+Input: 71\n1.70
+Output: Seu IMC é 24.57 (Saudável).
+
+Teste 2:
+Input: 85\n1.60
+Output: Seu IMC é 33.20 (Obesidade grau I).

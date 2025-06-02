@@ -1,0 +1,15 @@
+Teste 1:
+Input: 90.5\n1.85
+Output: Seu IMC é 26.44 - Classificação: Sobrepeso
+
+Teste 2:
+Input: 65.0\n1.75
+Output: Seu IMC é 21.22 - Classificação: Peso normal
+
+Teste 3:
+Input: 45.0\n1.60
+Output: Seu IMC é 17.58 - Classificação: Abaixo do peso
+
+Teste 4:
+Input: 120.0\n1.70
+Output: Seu IMC é 41.52 - Classificação: Obesidade grau 3

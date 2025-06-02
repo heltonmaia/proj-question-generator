@@ -1,0 +1,19 @@
+Teste 1:
+Input: 10.0 20.0 30.0 40.0
+Output: Soma: 100.00
+Média: 25.00
+
+Teste 2:
+Input: 5.5
+Output: Soma: 5.50
+Média: 5.50
+
+Teste 3:
+Input: 
+Output: Soma: 0.00
+Média: 0.00
+
+Teste 4:
+Input: -10.0 0.0 10.0 20.0 15.0
+Output: Soma: 35.00
+Média: 7.00
