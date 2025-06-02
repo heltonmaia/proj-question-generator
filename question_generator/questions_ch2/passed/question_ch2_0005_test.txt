@@ -1,7 +1,0 @@
-Teste 1:
-Input: 75
-Output: Bom
-
-Teste 2:
-Input: -10
-Output: Pontuação inválida.

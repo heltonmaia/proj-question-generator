@@ -1,7 +1,0 @@
-Teste 1:
-Input: Parabens Python
-Output: A frase é um exemplo de boa prática em Python!
-
-Teste 2:
-Input: Eu estou aprendendo python.
-Output: A frase menciona a linguagem Python!
