@@ -25,13 +25,13 @@ This project generates, tests, and organizes Python programming questions based 
 ```
 
 1. Generate question(s)
-python question_builder.py
+`python question_builder.py`
 
 2. Extract and prepare test files
-python question_solver.py
+`python question_solver.py`
 
 3. Run tests and filter passed questions
-python question_find_passed.py
+`python question_find_passed.py`
 
 4. Compile passed questions into a PDF list
-python create_pdf_all.py
+`python create_pdf_all.py`
