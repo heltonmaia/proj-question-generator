@@ -1,0 +1,23 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma dos números: 15
+Média dos números: 3.00
+Quantidade de números pares: 2
+
+Teste 2:
+Input: 10 20 30 15 25
+Output: Soma dos números: 100
+Média dos números: 20.00
+Quantidade de números pares: 3
+
+Teste 3:
+Input: -2 -1 0 1 2
+Output: Soma dos números: 0
+Média dos números: 0.00
+Quantidade de números pares: 3
+
+Teste 4:
+Input: 
+Output: Soma dos números: 0
+Média dos números: 0.00
+Quantidade de números pares: 0

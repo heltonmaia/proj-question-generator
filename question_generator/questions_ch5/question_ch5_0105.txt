@@ -1,0 +1,126 @@
+```
+### Enunciado
+
+Crie uma função Python chamada `analisar_string` que receba uma string (uma palavra ou frase) como argumento. A função deve realizar as seguintes análises e retornar três informações:
+
+1.  **Comprimento da String:** O número total de caracteres na string.
+2.  **Contagem de Vogais:** O número de vogais (a, e, i, o, u), considerando tanto letras maiúsculas quanto minúsculas.
+3.  **Verificação de Palíndromo:** Um valor booleano (`True` ou `False`) indicando se a string é um palíndromo (lê-se da mesma forma de trás para frente, ignorando maiúsculas e minúsculas). Para esta verificação, considere a string exatamente como foi fornecida, sem remover espaços ou caracteres especiais.
+
+No programa principal, solicite ao usuário que digite uma palavra ou frase. Em seguida, chame a função `analisar_string` com a entrada do usuário e imprima os três resultados de forma clara e legível.
+
+### Code Solução
+
+```python
+def analisar_string(texto: str) -> tuple[int, int, bool]:
+    """
+    Analisa uma string para determinar seu comprimento, número de vogais e se é um palíndromo.
+
+    Args:
+        texto: A string a ser analisada (palavra ou frase).
+
+    Returns:
+        Uma tupla contendo:
+        - O comprimento da string (int).
+        - O número de vogais (int).
+        - True se a string for um palíndromo, False caso contrário (bool).
+    """
+    # 1. Comprimento da String
+    comprimento = len(texto)
+
+    # 2. Contagem de Vogais
+    vogais = "aeiouAEIOU"
+    contagem_vogais = 0
+    for caractere in texto:
+        if caractere in vogais:
+            contagem_vogais += 1
+
+    # 3. Verificação de Palíndromo
+    # Converte a string para minúsculas para ignorar a capitalização
+    texto_minusculo = texto.lower()
+    # Inverte a string
+    texto_invertido = texto_minusculo[::-1]
+    # Compara a string original (em minúsculas) com a invertida
+    eh_palindromo = texto_minusculo == texto_invertido
+
+    return comprimento, contagem_vogais, eh_palindromo
+
+# Programa principal
+if __name__ == "__main__":
+    entrada_usuario = input("Digite uma palavra ou frase: ")
+
+    comprimento_str, num_vogais_str, palindromo_status = analisar_string(entrada_usuario)
+
+    print(f"\nResultados para: '{entrada_usuario}'")
+    print(f"Comprimento da string: {comprimento_str}")
+    print(f"Número de vogais: {num_vogais_str}")
+    print(f"É um palíndromo? {palindromo_status}")
+
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+Python
+```
+Saída:
+```
+Resultados para: 'Python'
+Comprimento da string: 6
+Número de vogais: 1
+É um palíndromo? False
+```
+
+**Teste 2**
+Entrada:
+```
+Arara
+```
+Saída:
+```
+Resultados para: 'Arara'
+Comprimento da string: 5
+Número de vogais: 3
+É um palíndromo? True
+```
+
+**Teste 3**
+Entrada:
+```
+roma me tem amor
+```
+Saída:
+```
+Resultados para: 'roma me tem amor'
+Comprimento da string: 16
+Número de vogais: 6
+É um palíndromo? True
+```
+
+**Teste 4**
+Entrada:
+```
+AULA
+```
+Saída:
+```
+Resultados para: 'AULA'
+Comprimento da string: 4
+Número de vogais: 3
+É um palíndromo? False
+```
+
+**Teste 5**
+Entrada:
+```
+
+```
+Saída:
+```
+Resultados para: ''
+Comprimento da string: 0
+Número de vogais: 0
+É um palíndromo? True
+```

@@ -1,0 +1,135 @@
+## Enunciado
+
+Crie uma função Python chamada `analisar_estatisticas_lista` que receba uma lista de números inteiros como parâmetro. Esta função deve calcular e retornar quatro valores: o maior número da lista, o menor número da lista, a quantidade de números pares e a quantidade de números ímpares.
+
+**Condição Especial:**
+*   Se a lista de entrada estiver vazia, a função deve retornar `(None, None, 0, 0)` para indicar que não há maior/menor e zero contagens.
+
+No programa principal, solicite ao usuário uma linha de números inteiros separados por vírgula (e opcionalmente espaços, que devem ser ignorados). Converta-os em uma lista de inteiros, chame a função `analisar_estatisticas_lista` e imprima os resultados de forma clara.
+
+**Exemplo de entrada/saída esperado:**
+Se a entrada for: `5, -2, 8, 0, 13, -7, 4`
+A saída esperada seria:
+```
+Maior número: 13
+Menor número: -7
+Quantidade de números pares: 4
+Quantidade de números ímpares: 3
+```
+
+## Code Solução
+
+```python
+def analisar_estatisticas_lista(numeros: list[int]) -> tuple[int | None, int | None, int, int]:
+    """
+    Analisa uma lista de números inteiros para encontrar o maior, menor,
+    a contagem de pares e a contagem de ímpares.
+
+    Args:
+        numeros: Uma lista de números inteiros.
+
+    Retorna:
+        Uma tupla contendo (maior_numero, menor_numero, qtd_pares, qtd_impares).
+        Retorna (None, None, 0, 0) se a lista estiver vazia.
+    """
+    if not numeros:
+        return None, None, 0, 0
+
+    maior = max(numeros)
+    menor = min(numeros)
+    
+    pares = 0
+    impares = 0
+
+    for num in numeros:
+        if num % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+            
+    return maior, menor, pares, impares
+
+# Leitura da entrada (uma linha de números separados por vírgula)
+entrada_str = input()
+if entrada_str.strip(): # Verifica se a string não está vazia ou contém apenas espaços
+    # Divide a string por vírgulas e converte cada parte para inteiro
+    lista_numeros = [int(x.strip()) for x in entrada_str.split(',')]
+else:
+    lista_numeros = [] # Se a entrada for vazia, a lista é vazia
+
+# Chama a função para analisar a lista
+maior_val, menor_val, qtd_pares, qtd_impares = analisar_estatisticas_lista(lista_numeros)
+
+# Imprime os resultados
+if maior_val is None:
+    print("A lista está vazia.")
+else:
+    print(f"Maior número: {maior_val}")
+    print(f"Menor número: {menor_val}")
+    print(f"Quantidade de números pares: {qtd_pares}")
+    print(f"Quantidade de números ímpares: {qtd_impares}")
+```
+
+## Testes
+
+**Teste 1**
+Entrada:
+```
+5, -2, 8, 0, 13, -7, 4
+```
+Saída:
+```
+Maior número: 13
+Menor número: -7
+Quantidade de números pares: 4
+Quantidade de números ímpares: 3
+```
+
+**Teste 2**
+Entrada:
+```
+10, 20, 30, 40, 50
+```
+Saída:
+```
+Maior número: 50
+Menor número: 10
+Quantidade de números pares: 5
+Quantidade de números ímpares: 0
+```
+
+**Teste 3**
+Entrada:
+```
+-1, -3, -5, -7, -9
+```
+Saída:
+```
+Maior número: -1
+Menor número: -9
+Quantidade de números pares: 0
+Quantidade de números ímpares: 5
+```
+
+**Teste 4**
+Entrada:
+```
+7
+```
+Saída:
+```
+Maior número: 7
+Menor número: 7
+Quantidade de números pares: 0
+Quantidade de números ímpares: 1
+```
+
+**Teste 5**
+Entrada:
+```
+
+```
+Saída:
+```
+A lista está vazia.
+```

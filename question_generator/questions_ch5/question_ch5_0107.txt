@@ -1,0 +1,92 @@
+### Enunciado
+
+Crie uma função Python que receba uma lista de números inteiros. Esta função deve ser capaz de realizar as seguintes análises e retornar quatro valores:
+1.  A soma de todos os números na lista.
+2.  A média aritmética dos números na lista.
+3.  A quantidade de números pares presentes na lista.
+4.  A quantidade de números ímpares presentes na lista.
+
+No programa principal, você deve:
+1.  Solicitar ao usuário que digite uma série de números inteiros em uma única linha, separados por espaços.
+2.  Converter essa entrada em uma lista de números inteiros.
+3.  Chamar a função criada, passando a lista de números como argumento.
+4.  Imprimir os quatro resultados retornados pela função de forma clara e formatada. A média deve ser exibida com duas casas decimais.
+
+Considere que a lista de entrada não estará vazia para os testes.
+
+#### Code Solução
+
+```python
+def analisar_lista_numeros(lista: list[int]) -> tuple[int, float, int, int]:
+    """
+    Analisa uma lista de números inteiros, calculando sua soma, média,
+    quantidade de números pares e quantidade de números ímpares.
+
+    Args:
+        lista (list[int]): Uma lista de números inteiros.
+
+    Returns:
+        tuple[int, float, int, int]: Uma tupla contendo:
+            - A soma de todos os números.
+            - A média aritmética dos números (float).
+            - A contagem de números pares.
+            - A contagem de números ímpares.
+    """
+    soma = 0
+    pares = 0
+    impares = 0
+
+    for numero in lista:
+        soma += numero
+        if numero % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+
+    media = soma / len(lista)
+
+    return soma, media, pares, impares
+
+# Programa principal
+# Ler a linha de entrada e converter para uma lista de inteiros
+entrada_str = input()
+numeros_str = entrada_str.split()
+lista_de_numeros = [int(num) for num in numeros_str]
+
+# Chamar a função e desempacotar os resultados
+soma_total, media_calculada, qtd_pares, qtd_impares = analisar_lista_numeros(lista_de_numeros)
+
+# Imprimir os resultados formatados
+print(f"Soma dos números: {soma_total}")
+print(f"Média dos números: {media_calculada:.2f}")
+print(f"Quantidade de números pares: {qtd_pares}")
+print(f"Quantidade de números ímpares: {qtd_impares}")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5
+```
+Saída:
+```
+Soma dos números: 15
+Média dos números: 3.00
+Quantidade de números pares: 2
+Quantidade de números ímpares: 3
+```
+
+**Teste 2**
+Entrada:
+```
+-10 0 5 15 -2 8
+```
+Saída:
+```
+Soma dos números: 16
+Média dos números: 2.67
+Quantidade de números pares: 3
+Quantidade de números ímpares: 3
+```

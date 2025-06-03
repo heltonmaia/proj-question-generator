@@ -1,0 +1,13 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma dos números: 15
+Média dos números: 3.00
+Quantidade de números pares: 2
+Quantidade de números ímpares: 3
+
+Teste 2:
+Input: -10 0 5 15 -2 8
+Output: Soma dos números: 16
+Média dos números: 2.67
+Quantidade de números pares: 3
+Quantidade de números ímpares: 3

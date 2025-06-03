@@ -1,0 +1,24 @@
+Teste 1:
+Input: 1 2 3 4 5
+Output: Soma: 15.00
+Média: 3.00
+Menor valor: 1.00
+Maior valor: 5.00
+
+Teste 2:
+Input: 10.5 2.0 8.7 15.3
+Output: Soma: 36.50
+Média: 9.13
+Menor valor: 2.00
+Maior valor: 15.30
+
+Teste 3:
+Input: 
+Output: A lista de números está vazia. Nenhuma estatística para exibir.
+
+Teste 4:
+Input: 42.0
+Output: Soma: 42.00
+Média: 42.00
+Menor valor: 42.00
+Maior valor: 42.00

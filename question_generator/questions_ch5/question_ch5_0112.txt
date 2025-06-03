@@ -1,0 +1,101 @@
+#### Enunciado
+
+Desenvolva um programa Python que permita ao usuário inserir uma sequência de números inteiros. O programa deve então analisar essa sequência utilizando uma função para calcular e retornar múltiplas informações sobre os números.
+
+Sua tarefa é:
+
+1.  **Função `analisar_numeros`:** Crie uma função chamada `analisar_numeros` que receba uma lista de números inteiros como parâmetro. Esta função deve calcular:
+    *   A soma de todos os números na lista.
+    *   A média dos números na lista (considere que a lista nunca estará vazia para evitar divisão por zero neste exercício).
+    *   A contagem de quantos números na lista são positivos (maiores que zero).
+    A função deve retornar esses três valores em uma tupla, na seguinte ordem: `(soma, media, contagem_positivos)`.
+2.  **Programa Principal:** No programa principal, solicite ao usuário que insira números inteiros separados por espaço em uma única linha. Converta essa entrada em uma lista de inteiros. Em seguida, chame a função `analisar_numeros` com essa lista e imprima os resultados de forma clara e formatada, arredondando a média para duas casas decimais.
+
+#### Code Solução
+
+```python
+from typing import List, Tuple
+
+def analisar_numeros(numeros: List[int]) -> Tuple[int, float, int]:
+    """
+    Calcula a soma, a média e a contagem de números positivos em uma lista.
+
+    Args:
+        numeros: Uma lista de números inteiros. Assume-se que a lista não é vazia.
+
+    Returns:
+        Uma tupla contendo a soma dos números, a média e a contagem de números positivos.
+    """
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    
+    contagem_positivos = 0
+    for num in numeros:
+        if num > 0:
+            contagem_positivos += 1
+    
+    return soma, media, contagem_positivos
+
+# Programa Principal
+entrada_str = input() # Espera uma linha de números separados por espaço
+numeros_lista = list(map(int, entrada_str.split()))
+
+# Chama a função e desempacota os múltiplos valores de retorno
+soma_total, media_calculada, positivos_contados = analisar_numeros(numeros_lista)
+
+# Imprime os resultados formatados
+print(f"Soma dos números: {soma_total}")
+print(f"Média dos números: {media_calculada:.2f}")
+print(f"Números positivos: {positivos_contados}")
+
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+10 20 -5 15 0 30
+```
+Saída:
+```
+Soma dos números: 70
+Média dos números: 11.67
+Números positivos: 4
+```
+
+**Teste 2**
+Entrada:
+```
+-1 -2 -3 -4 -5
+```
+Saída:
+```
+Soma dos números: -15
+Média dos números: -3.00
+Números positivos: 0
+```
+
+**Teste 3**
+Entrada:
+```
+7
+```
+Saída:
+```
+Soma dos números: 7
+Média dos números: 7.00
+Números positivos: 1
+```
+
+**Teste 4**
+Entrada:
+```
+0 0 0 0
+```
+Saída:
+```
+Soma dos números: 0
+Média dos números: 0.00
+Números positivos: 0
+```

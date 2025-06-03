@@ -1,0 +1,112 @@
+```
+### Enunciado
+
+Você foi encarregado de criar um programa para ajudar no processamento de dados numéricos. Sua tarefa é desenvolver uma aplicação Python que solicite ao usuário uma sequência de números, calcule a soma total e a média desses números, e então exiba ambos os resultados.
+
+Para isso, você deve seguir as seguintes etapas:
+
+1.  O programa deve primeiramente perguntar ao usuário quantos números ele deseja inserir.
+2.  Em seguida, deve solicitar que o usuário digite cada número, um por um, armazenando-os em uma lista.
+3.  Crie uma função chamada `calcular_estatisticas` que aceita uma lista de números (do tipo `float`) como argumento. Esta função deve ser responsável por calcular a soma de todos os elementos da lista e a média aritmética desses elementos.
+4.  A função `calcular_estatisticas` **deve retornar a soma e a média como dois valores distintos (utilizando uma tupla)**.
+5.  No programa principal, chame a função `calcular_estatisticas` com a lista de números fornecida pelo usuário e utilize os valores retornados para exibir a soma total e a média. A média deve ser formatada para exibir **duas casas decimais**.
+
+### Code Solução
+
+```python
+def calcular_estatisticas(numeros: list[float]) -> tuple[float, float]:
+    """
+    Calcula a soma e a média de uma lista de números.
+
+    Args:
+        numeros (list[float]): A lista de números a serem processados.
+
+    Returns:
+        tuple[float, float]: Uma tupla contendo a soma total e a média dos números.
+                             Retorna (0.0, 0.0) se a lista estiver vazia para evitar divisão por zero.
+    """
+    if not numeros:
+        return 0.0, 0.0
+
+    soma_total = sum(numeros)
+    media = soma_total / len(numeros)
+    return soma_total, media
+
+if __name__ == "__main__":
+    quantidade_numeros = int(input("Quantos números você deseja inserir? "))
+
+    lista_de_numeros = []
+    for i in range(quantidade_numeros):
+        while True:
+            try:
+                numero = float(input(f"Digite o {i + 1}º número: "))
+                lista_de_numeros.append(numero)
+                break
+            except ValueError:
+                print("Entrada inválida. Por favor, digite um número.")
+
+    soma_result, media_result = calcular_estatisticas(lista_de_numeros)
+
+    print(f"Soma total: {soma_result}")
+    print(f"Média: {media_result:.2f}")
+
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+3
+10
+20
+30
+```
+Saída:
+```
+Soma total: 60.0
+Média: 20.00
+```
+
+**Teste 2**
+Entrada:
+```
+4
+5.5
+2.0
+8.5
+1.0
+```
+Saída:
+```
+Soma total: 17.0
+Média: 4.25
+```
+
+**Teste 3**
+Entrada:
+```
+1
+100
+```
+Saída:
+```
+Soma total: 100.0
+Média: 100.00
+```
+
+**Teste 4**
+Entrada:
+```
+5
+-10
+-20
+0
+5
+15
+```
+Saída:
+```
+Soma total: -10.0
+Média: -2.00
+```

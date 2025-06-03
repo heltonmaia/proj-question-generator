@@ -1,5 +1,6 @@
-cat > .gitignore <<EOF
-# Python virtual environments
+# -------------------------------
+# 📦 Python Environment & Bytecode
+# -------------------------------
 .env/
 .venv/
 env/
@@ -8,43 +9,59 @@ __pycache__/
 *.py[cod]
 *.so
 
-# Log files
+# -------------------------------
+# 🧪 Test / Cache / Log Files
+# -------------------------------
 *.log
+.cache/
+.mypy_cache/
+pytest_cache/
+*.tmp
+*.bak
 
-# Local configuration files
-*.env
-*.DS_Store
+# -------------------------------
+# 📝 Editor / System Files
+# -------------------------------
+.DS_Store
 .idea/
 .vscode/
 
-# Build artifacts
+# -------------------------------
+# 📦 Packaging & Build
+# -------------------------------
 dist/
 build/
 *.egg-info/
 
-# MkDocs output
+# -------------------------------
+# 📄 Configuration / Secrets
+# -------------------------------
+*.env
+config.yml
+
+# -------------------------------
+# 📓 Jupyter Notebooks
+# -------------------------------
+.ipynb_checkpoints/
+
+# -------------------------------
+# 📚 MkDocs or Jupyter Book
+# -------------------------------
 site/
 
-# Poetry files
+# -------------------------------
+# 📦 Poetry & Conda
+# -------------------------------
 poetry.lock
-
-# Conda files
 *.conda
 *.yml
 *.yaml
+!requirements.yml
 
-# Temporary data
-*.tmp
-*.bak
-
-# Jupyter notebooks checkpoints (if used)
-.ipynb_checkpoints/
-
-# Caches
-.cache/
-.mypy_cache/
-pytest_cache/
-
-# Local config
-config.yml
-EOF
+# -------------------------------
+# 📁 Project Output
+# -------------------------------
+questions/**/*.py
+questions/**/*.sh
+questions/**/*_test.txt
+*.pdf

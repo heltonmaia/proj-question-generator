@@ -1,0 +1,117 @@
+## Prompt para Gerador de Questões de Python
+
+### Enunciado
+
+Você foi contratado para desenvolver uma ferramenta simples para análise de listas de números. Sua tarefa é criar uma função em Python que receba uma lista de números inteiros e calcule três informações importantes sobre essa lista: a soma de todos os seus elementos, a quantidade de números pares e a quantidade de números ímpares.
+
+A função deve ser chamada `analisar_lista_numeros` e deve aceitar um único parâmetro: `numeros` (uma lista de inteiros). Ela deve retornar uma tupla contendo a soma total, a contagem de números pares e a contagem de números ímpares, **nesta ordem**.
+
+No programa principal, leia uma linha de números inteiros separados por espaço (assuma que a entrada será sempre de inteiros válidos), converta-os para uma lista de inteiros e use a função `analisar_lista_numeros` para obter os resultados. Por fim, imprima a soma, a contagem de pares e a contagem de ímpares, cada um em uma linha separada, com uma mensagem descritiva.
+
+Certifique-se de usar `docstrings` e `type hints` para documentar sua função, conforme boas práticas de programação Python.
+
+### Code Solução
+
+```python
+def analisar_lista_numeros(numeros: list[int]) -> tuple[int, int, int]:
+    """
+    Analisa uma lista de números inteiros, calculando a soma,
+    a quantidade de números pares e a quantidade de números ímpares.
+
+    Args:
+        numeros (list[int]): Uma lista de números inteiros.
+
+    Returns:
+        tuple[int, int, int]: Uma tupla contendo:
+                               - A soma total dos elementos.
+                               - A contagem de números pares.
+                               - A contagem de números ímpares.
+    """
+    soma_total = 0
+    pares_count = 0
+    impares_count = 0
+
+    for num in numeros:
+        soma_total += num
+        if num % 2 == 0:
+            pares_count += 1
+        else:
+            impares_count += 1
+            
+    return soma_total, pares_count, impares_count
+
+# Programa principal
+# Lê uma linha de números separados por espaço e os converte para inteiros
+entrada_str = input()
+numeros_input = [int(x) for x in entrada_str.split()]
+
+# Chama a função para analisar a lista
+soma, pares, impares = analisar_lista_numeros(numeros_input)
+
+# Imprime os resultados
+print(f"Soma total: {soma}")
+print(f"Quantidade de pares: {pares}")
+print(f"Quantidade de ímpares: {impares}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+1 2 3 4 5 6 7 8 9 10
+```
+Saída:
+```
+Soma total: 55
+Quantidade de pares: 5
+Quantidade de ímpares: 5
+```
+
+**Teste 2**
+Entrada:
+```
+-2 -1 0 1 2
+```
+Saída:
+```
+Soma total: 0
+Quantidade de pares: 3
+Quantidade de ímpares: 2
+```
+
+**Teste 3**
+Entrada:
+```
+2 4 6 8 100
+```
+Saída:
+```
+Soma total: 120
+Quantidade de pares: 5
+Quantidade de ímpares: 0
+```
+
+**Teste 4**
+Entrada:
+```
+11 13 15
+```
+Saída:
+```
+Soma total: 39
+Quantidade de pares: 0
+Quantidade de ímpares: 3
+```
+
+**Teste 5**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma total: 0
+Quantidade de pares: 0
+Quantidade de ímpares: 0
+```

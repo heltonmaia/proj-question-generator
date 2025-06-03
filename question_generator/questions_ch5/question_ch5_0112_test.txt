@@ -1,0 +1,23 @@
+Teste 1:
+Input: 10 20 -5 15 0 30
+Output: Soma dos números: 70
+Média dos números: 11.67
+Números positivos: 4
+
+Teste 2:
+Input: -1 -2 -3 -4 -5
+Output: Soma dos números: -15
+Média dos números: -3.00
+Números positivos: 0
+
+Teste 3:
+Input: 7
+Output: Soma dos números: 7
+Média dos números: 7.00
+Números positivos: 1
+
+Teste 4:
+Input: 0 0 0 0
+Output: Soma dos números: 0
+Média dos números: 0.00
+Números positivos: 0

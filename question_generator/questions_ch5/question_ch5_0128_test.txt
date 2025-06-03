@@ -1,0 +1,27 @@
+Test 1:
+Input: 10 20 30 40 50
+Output: Soma: 150.00
+Média: 30.00
+Menor: 10.00
+Maior: 50.00
+
+Test 2:
+Input: 5.5 -2.0 10.0 0.0 1.2
+Output: Soma: 14.70
+Média: 2.94
+Menor: -2.00
+Maior: 10.00
+
+Test 3:
+Input: 7.7
+Output: Soma: 7.70
+Média: 7.70
+Menor: 7.70
+Maior: 7.70
+
+Test 4:
+Input: -15 -5 -10
+Output: Soma: -30.00
+Média: -10.00
+Menor: -15.00
+Maior: -5.00

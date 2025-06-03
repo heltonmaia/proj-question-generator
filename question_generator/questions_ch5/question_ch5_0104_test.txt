@@ -1,0 +1,27 @@
+Teste 1:
+Input: 10 20 5 15 25
+Output: Menor valor: 5.0
+Maior valor: 25.0
+Média: 15.00
+
+Teste 2:
+Input: 3.5 1.0 7.0 2.5
+Output: Menor valor: 1.0
+Maior valor: 7.0
+Média: 3.50
+
+Teste 3:
+Input: -5 0 10 -2 8
+Output: Menor valor: -5.0
+Maior valor: 10.0
+Média: 2.20
+
+Teste 4:
+Input: 42.0
+Output: Menor valor: 42.0
+Maior valor: 42.0
+Média: 42.00
+
+Teste 5:
+Input: 
+Output: A lista está vazia, não é possível calcular as estatísticas.
