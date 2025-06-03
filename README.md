@@ -24,26 +24,14 @@ This project generates, tests, and organizes Python programming questions based 
 
 ```
 
-# 1. Generate question(s)
+1. Generate question(s)
 python question_builder.py
 
-# 2. Extract and prepare test files
+2. Extract and prepare test files
 python question_solver.py
 
-# 3. Run tests and filter passed questions
+3. Run tests and filter passed questions
 python question_find_passed.py
 
-# 4. Compile passed questions into a PDF list
+4. Compile passed questions into a PDF list
 python create_pdf_all.py
-
-
-flowchart TD
-    A[🌐 Online Material URL] --> B[📄 prompt.md]
-    B --> C[🤖 question_builder.py]
-    C --> D[📁 questions/*.txt]
-    D --> E[🛠️ question_solver.py]
-    E --> F[.py, .sh, _test.txt files]
-    F --> G[✅ question_find_passed.py]
-    G --> H[📂 questions/passed/]
-    H --> I[📘 create_pdf_all.py]
-    I --> J[🧾 Final PDF]
