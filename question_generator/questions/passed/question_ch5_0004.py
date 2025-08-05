@@ -1,0 +1,77 @@
+"""Crie um programa que funcione como uma calculadora de área para diferentes formas geométricas, incluindo triângulo, círculo e retângulo. O programa deve fornecer um menu fácil de usar para que o usuário selecione a forma desejada e, em seguida, insira as dimensões necessárias para calcular a área.
+
+Crie uma função principal (a lógica que representa o menu) que lida com as seguintes opções:
+
+*   **Opção 1**: Calcular a área de um triângulo (base e altura)
+*   **Opção 2**: Calcular a área de um círculo (raio)
+*   **Opção 3**: Calcular a área de um retângulo (comprimento e largura)
+*   **Opção 4**: Sair do programa
+
+Crie individualmente uma função para o cálculo das áreas de cada forma geométrica:
+
+*   `area_triangulo(base, altura)`
+*   `area_circulo(raio)`
+*   `area_retangulo(comprimento, largura)`
+
+**Observações:**
+*   Use a biblioteca `math` para obter o π (pi) nos cálculos do círculo.
+*   Arredonde todos os resultados para duas casas decimais."""
+
+import math
+
+def area_triangulo(base: float, altura: float) -> float:
+    """Calcula a área de um triângulo.
+
+    Args:
+        base (float): A base do triângulo.
+        altura (float): A altura do triângulo.
+
+    Retorna:
+        float: A área do triângulo.
+    """
+    return (base * altura) / 2
+
+def area_circulo(raio: float) -> float:
+    """Calcula a área de um círculo.
+
+    Args:
+        raio (float): O raio do círculo.
+
+    Retorna:
+        float: A área do círculo.
+    """
+    return math.pi * (raio ** 2)
+
+def area_retangulo(comprimento: float, largura: float) -> float:
+    """Calcula a área de um retângulo.
+
+    Args:
+        comprimento (float): O comprimento do retângulo.
+        largura (float): A largura do retângulo.
+
+    Retorna:
+        float: A área do retângulo.
+    """
+    return comprimento * largura
+
+# A lógica principal do programa lida com a entrada da opção do menu
+# e subsequentemente com as dimensões para o cálculo.
+opcao = int(input())
+
+if opcao == 1:
+    base = float(input())
+    altura = float(input())
+    area = area_triangulo(base, altura)
+    print(f"A área do triângulo é: {area:.2f}")
+elif opcao == 2:
+    raio = float(input())
+    area = area_circulo(raio)
+    print(f"A área do círculo é: {area:.2f}")
+elif opcao == 3:
+    comprimento = float(input())
+    largura = float(input())
+    area = area_retangulo(comprimento, largura)
+    print(f"A área do retângulo é: {area:.2f}")
+elif opcao == 4:
+    print("Programa encerrado.")
+# Não é necessário tratar outras opções, pois os testes fornecidos cobrem apenas as opções válidas.

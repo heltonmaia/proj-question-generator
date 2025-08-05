@@ -71,7 +71,7 @@ def create_solution_file(enunciado, solucao, output_path):
             f.write('\n')
     logger.info(f"Solution saved to: {output_path}")
 
-def create_tests_file(testes, output_path):
+def create_tests_file(testes, base_name, folder):
     """
     Saves the test cases to a formatted file.
     
@@ -82,14 +82,14 @@ def create_tests_file(testes, output_path):
     Raises:
         Exception: If there's an error while writing the file.
     """
-    with open(output_path, 'w', encoding='utf-8') as f:
-        for test in testes:
-            f.write(f"Test {test['numero']}:\n")
-            f.write(f"Input: {test['entrada']}\n")
-            f.write(f"Output: {test['saida']}\n")
-            if test != testes[-1]:
-                f.write("\n")
-    logger.info(f"Tests saved to: {output_path}")
+    for test in testes:
+        input_path = folder / f"{base_name}_test_{test['numero']}.in"
+        output_path = folder / f"{base_name}_test_{test['numero']}.out"
+        with open(input_path, 'w', encoding='utf-8') as f:
+            f.write(test['entrada'].replace(r'\n', '\n'))
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(test['saida'])
+    logger.info(f"Tests saved to: {folder}")
 
 def create_test_script(base_name, output_path):
     """
@@ -107,9 +107,8 @@ def create_test_script(base_name, output_path):
 echo "Running tests for {base_name}.py"
 
 PYTHON_FILE="{base_name}.py"
-TESTS_FILE="{base_name}_test.txt"
 
-if [ ! -f "$PYTHON_FILE" ] || [ ! -f "$TESTS_FILE" ]; then
+if [ ! -f "$PYTHON_FILE" ]; then
   echo "❌ Required files not found!"
   exit 1
 fi
@@ -117,34 +116,31 @@ fi
 total=0
 passed=0
 
-while IFS= read -r line; do
-  if [[ $line =~ ^Test ]]; then
-    test_name=$line
-    IFS= read -r input_line
-    input_data="${{input_line#Input: }}"
-    IFS= read -r output_line
-    expected_output="${{output_line#Output: }}"
+for test_in in {base_name}_test_*.in; do
+  test_name="${{test_in%.in}}"
+  test_out="{test_name}.out"
 
-    result=$(echo -e "$input_data" | python3 "$PYTHON_FILE" 2>&1)
-    exit_code=$?
+  result=$(python3 "$PYTHON_FILE" < "$test_in" 2>&1)
+  exit_code=$?
+  
+  expected_output=$(cat "$test_out")
 
-    if [ $exit_code -ne 0 ]; then
-      echo "❌ $test_name: RUNTIME ERROR (code $exit_code)"
-      echo "   Error output:"
-      echo "   $result"
+  if [ $exit_code -ne 0 ]; then
+    echo "❌ $test_name: RUNTIME ERROR (code $exit_code)"
+    echo "   Error output:"
+    echo "   $result"
+  else
+    if [ "$result" == "$expected_output" ]; then
+      echo "✅ $test_name: PASSED"
+      ((passed++))
     else
-      if [ "$result" == "$expected_output" ]; then
-        echo "✅ $test_name: PASSED"
-        ((passed++))
-      else
-        echo "❌ $test_name: FAILED"
-        echo "   Expected: '$expected_output'"
-        echo "   Got:      '$result'"
-      fi
+      echo "❌ $test_name: FAILED"
+      echo "   Expected: '$expected_output'"
+      echo "   Got:      '$result'"
     fi
-    ((total++))
   fi
-done < "$TESTS_FILE"
+  ((total++))
+done
 
 echo ""
 echo "Summary: $passed out of $total tests passed."
@@ -187,7 +183,7 @@ def process_question(txt_file_path):
     script_path = folder / f"{base}.sh"
 
     create_solution_file(question_data['enunciado'], question_data['solucao'], solution_path)
-    create_tests_file(question_data['testes'], tests_path)
+    create_tests_file(question_data['testes'], base, folder)
     create_test_script(base, script_path)
 
     print(f"\n✅ Files generated successfully:")
@@ -207,16 +203,14 @@ def main():
         Exception: If there's an error during directory creation or file processing.
     """
     questions_dir = Path("questions")
-
-    if not questions_dir.exists():
-        questions_dir.mkdir()
-        print(f"📁 Directory created: {questions_dir}")
-        print("Please add your .txt files to the 'questions' directory and run again.")
-        return
+    
+    # Ensure questions directory exists
+    questions_dir.mkdir(exist_ok=True)
 
     txt_files = list(questions_dir.glob("*.txt"))
     if not txt_files:
-        print("❌ No .txt files found in the 'questions' directory.")
+        print(f"❌ No .txt files found in the '{questions_dir}' directory.")
+        print(f"📁 Directory ready: {questions_dir}")
         return
 
     print(f"🔍 Found {len(txt_files)} files to process in '{questions_dir}':\n")

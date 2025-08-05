@@ -1,0 +1,14 @@
+Test 1:
+Input: 1000\n0.10\n2
+Output: Juro Simples: R$ 200.00
+Montante Final: R$ 1200.00
+
+Test 2:
+Input: 500\n0.05\n3.5
+Output: Juro Simples: R$ 87.50
+Montante Final: R$ 587.50
+
+Test 3:
+Input: 2500\n0.08\n0
+Output: Juro Simples: R$ 0.00
+Montante Final: R$ 2500.00

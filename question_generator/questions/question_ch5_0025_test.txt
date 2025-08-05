@@ -1,0 +1,14 @@
+Test 1:
+Input: 10.0\n5.0
+Output: A área do retângulo é: 50.00
+O perímetro do retângulo é: 30.00
+
+Test 2:
+Input: 3.5\n2.0
+Output: A área do retângulo é: 7.00
+O perímetro do retângulo é: 11.00
+
+Test 3:
+Input: 7.25\n1.0
+Output: A área do retângulo é: 7.25
+O perímetro do retângulo é: 16.50

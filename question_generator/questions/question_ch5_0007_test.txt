@@ -1,0 +1,14 @@
+Test 1:
+Input: 10.0\n5.0
+Output: Área: 50.00
+Perímetro: 30.00
+
+Test 2:
+Input: 3.5\n2.0
+Output: Área: 7.00
+Perímetro: 11.00
+
+Test 3:
+Input: 7.25\n7.25
+Output: Área: 52.56
+Perímetro: 29.00

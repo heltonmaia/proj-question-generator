@@ -1,5 +1,6 @@
 import os
 import re
+from pathlib import Path
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
@@ -75,7 +76,7 @@ class ExerciseListGenerator:
         Returns:
             str: Exercise number or "???" if not found
         """
-        match = re.search(r'ch\d+_(\d+)\.txt$', os.path.basename(file_path_or_name))
+        match = re.search(r'ch\d+_(\d+)\.txt$', os.path.basename(file_path_or_name), flags=re.IGNORECASE)
         return match.group(1) if match else "???"
     
     def extract_enunciado(self, content):
@@ -88,10 +89,11 @@ class ExerciseListGenerator:
         Returns:
             str: Formatted exercise statement with HTML tags
         """
-        # Get everything from "Enunciado" section until "Code Solution" or "Tests" begins
+        # Get everything from "Enunciado" section until "Code Solution" or "Testes" begins
         # or "Entrada" (if using old file format)
-        # Added (?i) for case-insensitive matching at section name start
-        match = re.search(r'(?s)#### (?i)Enunciado\s*\n?(.*?)(?=\n\s*#### ((?i)Code Solu|(?i)Testes)|\n\s*(?i)Entrada:|$)', content)
+        # Use flags via argument to avoid inline global flags errors
+        pattern = r'####\s*Enunciado\s*\n?(.*?)(?=\n\s*####\s*(Code\s*Solu|Testes)|\n\s*Entrada:|$)'
+        match = re.search(pattern, content, flags=re.DOTALL | re.IGNORECASE)
         if match:
             enunciado_text = match.group(1).strip()
             
@@ -99,26 +101,49 @@ class ExerciseListGenerator:
             enunciado_text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', enunciado_text)
             # Replace `code` with <font name="Courier">code</font>
             enunciado_text = re.sub(r'`([^`]+)`', r'<font name="Courier">\1</font>', enunciado_text)
-            # Replace \n with <br/> to preserve line breaks in Paragraph
-            enunciado_text = enunciado_text.replace('\n', '<br/>\n')
+            # Replace newlines with <br/>
+            enunciado_text = enunciado_text.replace('\n', '<br/>')
             return enunciado_text
-        return "[Statement not found]"
+        return ""
 
     def extract_testes(self, content):
         """
-        Extract test cases from file content.
-        
-        Args:
-            content (str): Full content of the exercise file
-            
-        Returns:
-            str: Test cases content or None if not found
+        Extract the tests section from the content, returning a list of test blocks.
         """
-        match = re.search(r'(?s)#### (?i)Testes\s*\n?(.*?)(?=\n\s*#### ((?i)Code Solu|(?i)Enunciado)|$)', content)
-        if match:
-            testes_text = match.group(1).strip()
-            return testes_text
-        return None
+        try:
+            # Look for a section header like "#### Testes" (case-insensitive)
+            tests_section_match = re.search(r'^\s*####\s*Testes\s*\n(.*)$', content, flags=re.IGNORECASE | re.DOTALL | re.MULTILINE)
+            if not tests_section_match:
+                # Fallback: sometimes tests can appear without the header, try to find Entrada/Saída pairs
+                # We'll split by test labels like "Teste 1", "Teste 2" etc., but keep content robust
+                tests_section = content
+            else:
+                tests_section = tests_section_match.group(1)
+
+            # Split tests by lines starting with "Teste <num>" (case-insensitive)
+            # Use a capturing split to preserve labels
+            label_regex = re.compile(r'^\s*(Teste\s*\d+\s*:)\s*$', flags=re.IGNORECASE | re.MULTILINE)
+            parts = label_regex.split(tests_section)
+
+            tests = []
+            if parts:
+                # If there was at least one label, parts will be like: [prefix, label1, body1, label2, body2, ...]
+                # If no labels, we consider the whole section as one test block
+                if len(parts) > 1:
+                    # Iterate in pairs (label, body)
+                    for i in range(1, len(parts), 2):
+                        label = parts[i].strip()
+                        body = parts[i+1] if i+1 < len(parts) else ''
+                        tests.append(f"{label}\n{body}")
+                else:
+                    tests.append(parts[0])
+            else:
+                tests.append(tests_section)
+
+            return tests if any(t.strip() for t in tests) else []
+        except Exception as e:
+            print(f"Error parsing tests section: {e}")
+            return []
 
     def collect_exercises(self):
         """
@@ -215,30 +240,15 @@ class ExerciseListGenerator:
             if ex.get('testes'):
                 story.append(Paragraph("Testes", styles['SectionHeader']))
                 
-                test_blocks = re.split(r'(\*\*Teste\s*\d+\*\*)', ex['testes'])
-                
-                current_test_label_text = None
-                buffer = ""
-
-                for block_idx, block_content in enumerate(test_blocks):
-                    if not block_content.strip():
-                        continue
-
-                    is_label_match = re.match(r'\*\*Teste\s*\d+\*\*', block_content)
-                    if is_label_match:
-                        if current_test_label_text and buffer.strip():
-                            self._add_test_content_to_story(story, buffer, styles)
-                            buffer = ""
-                        
-                        current_test_label_text = block_content.strip().replace('**', '') # Remove asterisks
-                        story.append(Paragraph(current_test_label_text, styles['TestLabel']))
-                    elif current_test_label_text:
-                        buffer += block_content
-                    elif block_idx == 0 and not is_label_match : # Case where first block is not a label
-                        buffer += block_content
-
-                if buffer.strip(): # Process the last accumulated buffer
-                    self._add_test_content_to_story(story, buffer, styles)
+                for test_block in ex['testes']:
+                    test_label_match = re.match(r'^\s*(Teste\s*\d+\s*:?)\s*', test_block, flags=re.IGNORECASE)
+                    if test_label_match:
+                        label = test_label_match.group(1)
+                        story.append(Paragraph(label, styles['TestLabel']))
+                        content = test_block[test_label_match.end():]
+                        self._add_test_content_to_story(story, content, styles)
+                    else:
+                        self._add_test_content_to_story(story, test_block, styles)
         try:
             doc.build(story)
             print(f"\nPDF generated successfully: {self.output_file}")
@@ -268,26 +278,21 @@ class ExerciseListGenerator:
                 text = text[:-len('```')].strip()
             return text
 
-        # Search for Input and Output blocks
-        # Adjusted to be more flexible with newlines and ``` blocks
-        entrada_match = re.search(r'(?i)Entrada:\s*\n?(.*?)(?=\n\s*(?i)Sa[ií]da:|$)', test_content, re.DOTALL)
-        saida_match = re.search(r'(?i)Sa[ií]da:\s*\n?(.*?)(?=$)', test_content, re.DOTALL)
+        # Search for Input and Output blocks (case-insensitive via flags)
+        entrada_match = re.search(r'Entrada:\s*\n?(.*?)(?=\n\s*Sa[ií]da:|$)', test_content, flags=re.DOTALL | re.IGNORECASE)
+        saida_match = re.search(r'Sa[ií]da:\s*\n?(.*?)(?=$)', test_content, flags=re.DOTALL | re.IGNORECASE)
 
         if entrada_match:
             story.append(Paragraph("Entrada:", styles['TestSubLabel']))
             entrada_text = clean_code_block(entrada_match.group(1).strip())
             if entrada_text:
                  story.append(Preformatted(entrada_text, styles['PreformattedCode']))
-            # else: # Optional: add [Empty] if empty
-            #      story.append(Paragraph("[Empty]", styles['PreformattedCode']))
 
         if saida_match:
             story.append(Paragraph("Saída:", styles['TestSubLabel']))
             saida_text = clean_code_block(saida_match.group(1).strip())
             if saida_text:
                 story.append(Preformatted(saida_text, styles['PreformattedCode']))
-            # else: # Optional
-            #     story.append(Paragraph("[Empty]", styles['PreformattedCode']))
 
     def generate(self):
         """
@@ -305,10 +310,21 @@ def main():
     Main function to execute the PDF generation process.
     """
     QUESTIONS_FOLDER = "./" 
-    ch_folder_name = "questions_ch5/passed"
+    ch_folder_name = "questions/passed"
     
-    if os.path.isdir(ch_folder_name) and os.path.exists(ch_folder_name):
-        QUESTIONS_FOLDER = ch_folder_name
+    # Ensure the questions directory exists
+    questions_dir = Path("questions")
+    questions_dir.mkdir(exist_ok=True)
+    
+    # Check different possible paths for the passed directory
+    if os.path.exists("questions/passed"):
+        QUESTIONS_FOLDER = "questions/passed"
+        print(f"Using questions folder: '{QUESTIONS_FOLDER}'")
+    elif os.path.exists("../questions/passed"):
+        QUESTIONS_FOLDER = "../questions/passed"
+        print(f"Using questions folder: '{QUESTIONS_FOLDER}'")
+    elif os.path.exists("question_generator/questions/passed"):
+        QUESTIONS_FOLDER = "question_generator/questions/passed"
         print(f"Using questions folder: '{QUESTIONS_FOLDER}'")
     else:
         print(f"Folder '{ch_folder_name}' not found. Checking current folder '{QUESTIONS_FOLDER}' for question files.")

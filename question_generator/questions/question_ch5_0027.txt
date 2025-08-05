@@ -1,0 +1,126 @@
+### Enunciado
+
+Você deve escrever um programa Python que leia uma sequência de números inteiros em uma única linha, separados por vírgulas (com ou sem espaços adicionais), e então utilize uma função para analisar essa lista. A função deve calcular e retornar a soma total dos números, a média aritmética dos números (arredondada para duas casas decimais), e a quantidade de números pares presentes na lista.
+
+Sua solução deve incluir uma função chamada `analisar_estatisticas_lista` que recebe uma lista de inteiros como parâmetro e retorna uma tupla com três valores: a soma, a média e a contagem de números pares.
+
+**Especificações da Função `analisar_estatisticas_lista`:**
+- **Parâmetros:** `lista_numeros` (uma lista de `int`).
+- **Retorno:** Uma `tuple[int, float, int]` contendo `(soma_total, media_aritmetica, quantidade_pares)`.
+- **Condição Especial:** Se a lista de entrada estiver vazia, a função deve retornar `(0, 0.0, 0)`.
+
+O programa principal deve ler a entrada, chamar a função `analisar_estatisticas_lista` e imprimir os resultados formatados conforme os exemplos de saída.
+
+### Code Solução
+
+```python
+def analisar_estatisticas_lista(lista_numeros: list[int]) -> tuple[int, float, int]:
+    """
+    Analisa uma lista de números inteiros, calculando a soma, a média
+    e a quantidade de números pares.
+
+    Args:
+        lista_numeros (list[int]): Uma lista de números inteiros.
+
+    Returns:
+        tuple[int, float, int]: Uma tupla contendo:
+                                - A soma de todos os números na lista.
+                                - A média dos números na lista (0.0 se a lista estiver vazia).
+                                - A contagem de números pares na lista.
+    """
+    soma_total = 0
+    quantidade_pares = 0
+    
+    if not lista_numeros:
+        return 0, 0.0, 0
+
+    for num in lista_numeros:
+        soma_total += num
+        if num % 2 == 0:
+            quantidade_pares += 1
+    
+    media_aritmetica = soma_total / len(lista_numeros)
+    
+    return soma_total, media_aritmetica, quantidade_pares
+
+# --- Programa Principal ---
+# Lê a linha de entrada e a divide em strings, convertendo para int
+entrada_str = input()
+
+# Se a entrada for uma string vazia (apenas Enter), a lista de números será vazia
+if entrada_str.strip() == "":
+    numeros = []
+else:
+    # Divide a string por vírgulas e remove espaços em branco de cada parte
+    numeros = [int(x.strip()) for x in entrada_str.split(',')]
+
+# Chama a função para obter as estatísticas
+soma, media, pares = analisar_estatisticas_lista(numeros)
+
+# Imprime os resultados formatados
+print(f"Soma: {soma}")
+print(f"Média: {media:.2f}")
+print(f"Pares: {pares}")
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+1, 2, 3, 4, 5
+```
+Saída:
+```
+Soma: 15
+Média: 3.00
+Pares: 2
+```
+
+**Teste 2**
+Entrada:
+```
+-2, 0, 1, 3, 4, -5
+```
+Saída:
+```
+Soma: 1
+Média: 0.17
+Pares: 3
+```
+
+**Teste 3**
+Entrada:
+```
+10, 20, 30
+```
+Saída:
+```
+Soma: 60
+Média: 20.00
+Pares: 3
+```
+
+**Teste 4**
+Entrada:
+```
+7, 11, 13
+```
+Saída:
+```
+Soma: 31
+Média: 10.33
+Pares: 0
+```
+
+**Teste 5**
+Entrada:
+```
+
+```
+Saída:
+```
+Soma: 0
+Média: 0.00
+Pares: 0
+```

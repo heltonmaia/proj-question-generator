@@ -1,0 +1,145 @@
+```
+#### Enunciado
+
+As equações quadráticas são fundamentais na matemática e possuem até duas raízes reais que podem ser calculadas usando a famosa Fórmula de Bhaskara. Para uma equação no formato \(Ax^2 + Bx + C = 0\), as raízes são dadas por:
+
+\[ R1 = \frac{-B + \sqrt{B^2 - 4AC}}{2A} \]
+\[ R2 = \frac{-B - \sqrt{B^2 - 4AC}}{2A} \]
+
+Sua tarefa é desenvolver um programa Python que calcule as raízes de uma equação quadrática. O programa deve seguir a modularização abaixo:
+
+1.  Crie uma função `ler_coeficientes()` que não recebe parâmetros e solicita ao usuário que insira três valores de ponto flutuante (A, B e C), retornando-os como uma tupla.
+2.  Crie uma função `verificar_possibilidade(a: float, b: float, c: float) -> bool` que receba os coeficientes A, B e C. Esta função deve:
+    *   Verificar se o coeficiente `A` é igual a zero. Se for, as raízes não podem ser calculadas por esta fórmula (seria uma equação linear).
+    *   Calcular o discriminante \(\Delta = B^2 - 4AC\).
+    *   Verificar se o discriminante é negativo. Se for, não existem raízes reais.
+    *   Retornar `False` se alguma dessas condições impedir o cálculo das raízes reais, e `True` caso contrário.
+3.  Crie uma função `calcular_raizes(a: float, b: float, c: float) -> tuple[float, float]` que receba os coeficientes A, B e C. **Esta função deve ser chamada apenas se `verificar_possibilidade` retornar `True`**. Ela deve calcular e retornar as duas raízes \(R1\) e \(R2\) como uma tupla.
+4.  No programa principal, utilize as funções criadas:
+    *   Obtenha os coeficientes A, B e C chamando `ler_coeficientes()`.
+    *   Verifique se as raízes podem ser calculadas chamando `verificar_possibilidade()`.
+    *   Se for possível, calcule as raízes chamando `calcular_raizes()` e imprima-as formatadas para duas casas decimais, conforme o exemplo de saída.
+    *   Se não for possível, imprima a mensagem "Impossível calcular".
+
+**Observação:** Utilize o módulo `math` para a função de raiz quadrada (`math.sqrt`).
+
+#### Code Solução
+
+```python
+import math
+
+def ler_coeficientes() -> tuple[float, float, float]:
+    """
+    Solicita ao usuário os coeficientes A, B e C de uma equação quadrática.
+
+    Retorna:
+        tuple[float, float, float]: Uma tupla contendo os valores de A, B e C.
+    """
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    return a, b, c
+
+def verificar_possibilidade(a: float, b: float, c: float) -> bool:
+    """
+    Verifica se é possível calcular as raízes reais de uma equação quadrática.
+
+    Args:
+        a (float): Coeficiente A da equação.
+        b (float): Coeficiente B da equação.
+        c (float): Coeficiente C da equação.
+
+    Retorna:
+        bool: True se as raízes reais podem ser calculadas, False caso contrário.
+    """
+    if a == 0:
+        return False
+    
+    delta = b**2 - 4 * a * c
+    if delta < 0:
+        return False
+    
+    return True
+
+def calcular_raizes(a: float, b: float, c: float) -> tuple[float, float]:
+    """
+    Calcula as raízes de uma equação quadrática, assumindo que são reais e calculáveis.
+
+    Args:
+        a (float): Coeficiente A da equação.
+        b (float): Coeficiente B da equação.
+        c (float): Coeficiente C da equação.
+
+    Retorna:
+        tuple[float, float]: Uma tupla contendo as duas raízes (R1, R2).
+    """
+    delta = b**2 - 4 * a * c
+    
+    r1 = (-b + math.sqrt(delta)) / (2 * a)
+    r2 = (-b - math.sqrt(delta)) / (2 * a)
+    
+    return r1, r2
+
+# Programa Principal
+if __name__ == "__main__":
+    a_val, b_val, c_val = ler_coeficientes()
+
+    if verificar_possibilidade(a_val, b_val, c_val):
+        r1, r2 = calcular_raizes(a_val, b_val, c_val)
+        print(f"R1 = {r1:.2f}")
+        print(f"R2 = {r2:.2f}")
+    else:
+        print("Impossível calcular")
+```
+
+#### Testes
+
+**Teste 1**
+Entrada:
+```
+10.0
+19.1
+5.2
+```
+Saída:
+```
+R1 = -0.33
+R2 = -1.58
+```
+
+**Teste 2**
+Entrada:
+```
+0.0
+20.0
+5.0
+```
+Saída:
+```
+Impossível calcular
+```
+
+**Teste 3**
+Entrada:
+```
+1.0
+-3.0
+2.0
+```
+Saída:
+```
+R1 = 2.00
+R2 = 1.00
+```
+
+**Teste 4**
+Entrada:
+```
+1.0
+2.0
+5.0
+```
+Saída:
+```
+Impossível calcular
+```

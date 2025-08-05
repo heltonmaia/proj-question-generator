@@ -1,0 +1,30 @@
+Test 1:
+Input: 1 2 3 4 5
+Output: Soma total: 15
+Quantidade de pares: 2
+Quantidade de ímpares: 3
+Menor número: 1
+Maior número: 5
+
+Test 2:
+Input: 10 -5 0 20 -15
+Output: Soma total: 10
+Quantidade de pares: 3
+Quantidade de ímpares: 2
+Menor número: -15
+Maior número: 20
+
+Test 3:
+Input: -1 -2 -3 -4
+Output: Soma total: -10
+Quantidade de pares: 2
+Quantidade de ímpares: 2
+Menor número: -4
+Maior número: -1
+
+Test 4:
+Input: 
+Output: Soma total: 0
+Quantidade de pares: 0
+Quantidade de ímpares: 0
+Lista vazia: não há menor ou maior número.

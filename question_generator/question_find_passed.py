@@ -3,13 +3,14 @@ from pathlib import Path
 import shutil
 
 def main():
-    questions_dir = Path("questions_ch5")
+    # Use current directory as questions directory
+    questions_dir = Path(".")
     passed_dir = questions_dir / "passed"
     passed_dir.mkdir(exist_ok=True)
 
     sh_files = list(questions_dir.glob("*.sh"))
     if not sh_files:
-        print("❌ No .sh scripts found in the 'questions' directory.")
+        print("❌ No .sh scripts found in the current directory.")
         return
 
     print(f"🔍 Running {len(sh_files)} test scripts...\n")

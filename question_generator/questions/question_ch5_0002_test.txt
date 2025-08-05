@@ -1,0 +1,23 @@
+Test 1:
+Input: 100 150 200 120
+Output: Soma Total de Vendas: 570
+Média Diária de Vendas: 142.50
+Quantidade de Dias Registrados: 4
+
+Test 2:
+Input: 50 50 50
+Output: Soma Total de Vendas: 150
+Média Diária de Vendas: 50.00
+Quantidade de Dias Registrados: 3
+
+Test 3:
+Input: 10
+Output: Soma Total de Vendas: 10
+Média Diária de Vendas: 10.00
+Quantidade de Dias Registrados: 1
+
+Test 4:
+Input: -5 10 0 15
+Output: Soma Total de Vendas: 20
+Média Diária de Vendas: 5.00
+Quantidade de Dias Registrados: 4

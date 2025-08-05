@@ -1,0 +1,87 @@
+### Enunciado
+
+Desenvolva um programa Python que utilize uma função para calcular a soma e a média aritmética de três números fornecidos pelo usuário.
+
+Sua tarefa é criar:
+
+1.  **Uma função** chamada `calcular_soma_media` que receberá três números (do tipo `float`) como parâmetros. Esta função deve calcular a soma e a média desses três números e **retornar ambos os resultados** (a soma e a média) simultaneamente, utilizando uma tupla.
+2.  No **programa principal**, solicite ao usuário que insira os três números. Em seguida, chame a função `calcular_soma_media` com os valores lidos e desempacote os resultados retornados. Por fim, exiba os valores calculados da soma e da média na tela, formatando-os para duas casas decimais.
+
+### Code Solução
+
+```python
+def calcular_soma_media(num1: float, num2: float, num3: float) -> tuple[float, float]:
+    """
+    Calcula a soma e a média aritmética de três números.
+
+    Args:
+        num1 (float): O primeiro número.
+        num2 (float): O segundo número.
+        num3 (float): O terceiro número.
+
+    Returns:
+        tuple[float, float]: Uma tupla contendo a soma e a média dos números,
+                             ambos formatados para duas casas decimais.
+    """
+    soma = num1 + num2 + num3
+    media = soma / 3
+    return soma, media
+
+# Leitura dos números do usuário
+try:
+    numero1 = float(input())
+    numero2 = float(input())
+    numero3 = float(input())
+
+    # Chamada da função e desempacotamento dos resultados
+    soma_total, media_final = calcular_soma_media(numero1, numero2, numero3)
+
+    # Exibição dos resultados formatados
+    print(f"Soma dos números: {soma_total:.2f}")
+    print(f"Média dos números: {media_final:.2f}")
+
+except ValueError:
+    print("Entrada inválida. Por favor, digite apenas números.")
+
+```
+
+### Testes
+
+**Teste 1**
+Entrada:
+```
+10.0
+20.0
+30.0
+```
+Saída:
+```
+Soma dos números: 60.00
+Média dos números: 20.00
+```
+
+**Teste 2**
+Entrada:
+```
+5.5
+2.0
+8.5
+```
+Saída:
+```
+Soma dos números: 16.00
+Média dos números: 5.33
+```
+
+**Teste 3**
+Entrada:
+```
+-1.0
+0.0
+1.0
+```
+Saída:
+```
+Soma dos números: 0.00
+Média dos números: 0.00
+```
