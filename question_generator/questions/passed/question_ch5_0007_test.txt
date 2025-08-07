@@ -1,0 +1,16 @@
+Test 1
+Input: ouro\nSim\nNao
+Output:
+150000.0
+Test 2
+Input: prata,bronze\nNao\nSim
+Output:
+90000.0
+Test 3
+Input: bronze,bronze,bronze\nNao\nNao
+Output:
+30000.0
+Test 4
+Input: ouro,prata,bronze\nNao\nSim
+Output:
+140000.0

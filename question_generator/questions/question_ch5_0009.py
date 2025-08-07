@@ -1,6 +1,4 @@
-#### Enunciado
-
-Você foi encarregado de desenvolver um programa Python capaz de aplicar diferentes operações matemáticas a uma lista de números fornecida pelo usuário. Para isso, você deve implementar uma abordagem modular utilizando funções, incluindo uma função de ordem superior.
+"""Você foi encarregado de desenvolver um programa Python capaz de aplicar diferentes operações matemáticas a uma lista de números fornecida pelo usuário. Para isso, você deve implementar uma abordagem modular utilizando funções, incluindo uma função de ordem superior.
 
 Seu programa deve conter as seguintes funções:
 
@@ -21,11 +19,8 @@ Seu programa deve conter as seguintes funções:
 
 No programa principal, você deve:
 *   Obter a lista de números do usuário utilizando a função `ler_lista_numeros()`.
-*   Demonstrar o uso da função `processar_lista()` com cada uma das funções de operação (`dobrar`, `quadrado`, `raiz_quadrada`), imprimindo a lista resultante para cada caso.
+*   Demonstrar o uso da função `processar_lista()` com cada uma das funções de operação (`dobrar`, `quadrado`, `raiz_quadrada`), imprimindo a lista resultante para cada caso."""
 
-#### Solução
-
-```python
 import math
 
 def ler_lista_numeros() -> list[float]:
@@ -82,46 +77,3 @@ print(f"Resultados ao elevar ao quadrado: {resultados_quadrado}")
 
 resultados_raiz = processar_lista(raiz_quadrada, numeros)
 print(f"Resultados da raiz quadrada: {resultados_raiz}")
-
-```
-
-#### Testes
-
-**Teste 1**
-Entrada:
-```
-1 2 3
-```
-Saída:
-```
-Lista original: [1.0, 2.0, 3.0]
-Resultados ao dobrar: [2.0, 4.0, 6.0]
-Resultados ao elevar ao quadrado: [1.0, 4.0, 9.0]
-Resultados da raiz quadrada: [1.0, 1.41, 1.73]
-```
-
-**Teste 2**
-Entrada:
-```
-4 10 0.25
-```
-Saída:
-```
-Lista original: [4.0, 10.0, 0.25]
-Resultados ao dobrar: [8.0, 20.0, 0.5]
-Resultados ao elevar ao quadrado: [16.0, 100.0, 0.06]
-Resultados da raiz quadrada: [2.0, 3.16, 0.5]
-```
-
-**Teste 3**
-Entrada:
-```
-100
-```
-Saída:
-```
-Lista original: [100.0]
-Resultados ao dobrar: [200.0]
-Resultados ao elevar ao quadrado: [10000.0]
-Resultados da raiz quadrada: [10.0]
-```

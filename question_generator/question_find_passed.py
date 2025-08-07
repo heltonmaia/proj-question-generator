@@ -20,25 +20,24 @@ def main():
         print(f"🚀 Testing: {sh_file.name}")
 
         try:
-            result = subprocess.run(
-                ["/bin/bash", sh_file.name],     # execute using bash
-                cwd=questions_dir,               # run inside the questions directory
-                capture_output=True,
+            subprocess.run(
+                ["/bin/bash", sh_file.name],
+                cwd=questions_dir,
+                check=True,
+                capture_output=True, # Capture output to show on failure
                 text=True
             )
+            print(f"✅ ALL tests passed for {base}.")
 
-            if result.returncode == 0:
-                print(f"✅ ALL tests passed for {base}.")
+            # Files to move: .py, .txt, .sh, _test.txt
+            for ext in [".py", ".txt", ".sh", "_test.txt"]:
+                file = questions_dir / f"{base}{ext}"
+                if file.exists():
+                    shutil.move(str(file), passed_dir / file.name)
 
-                # Files to move: .py, .txt, .sh, _test.txt
-                for ext in [".py", ".txt", ".sh", "_test.txt"]:
-                    file = questions_dir / f"{base}{ext}"
-                    if file.exists():
-                        shutil.move(str(file), passed_dir / file.name)
-
-            else:
-                print(f"❌ Tests FAILED for {base}.")
-                print(result.stdout.strip())
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Tests FAILED for {base}.")
+            print(e.stdout.strip())
 
         except Exception as e:
             print(f"❌ Error running {sh_file.name}: {e}")

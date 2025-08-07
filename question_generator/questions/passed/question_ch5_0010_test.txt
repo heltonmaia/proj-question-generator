@@ -1,0 +1,16 @@
+Test 1
+Input: 48\n18
+Output:
+O MDC de 48 e 18 é: 6
+Test 2
+Input: 17\n23
+Output:
+O MDC de 17 e 23 é: 1
+Test 3
+Input: 10\n5
+Output:
+O MDC de 10 e 5 é: 5
+Test 4
+Input: 25\n0
+Output:
+O MDC de 25 e 0 é: 25

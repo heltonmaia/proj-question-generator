@@ -1,0 +1,21 @@
+Test 1
+Input: 1 2 3
+Output:
+Lista original: [1.0, 2.0, 3.0]
+Resultados ao dobrar: [2.0, 4.0, 6.0]
+Resultados ao elevar ao quadrado: [1.0, 4.0, 9.0]
+Resultados da raiz quadrada: [1.0, 1.41, 1.73]
+Test 2
+Input: 4 10 0.25
+Output:
+Lista original: [4.0, 10.0, 0.25]
+Resultados ao dobrar: [8.0, 20.0, 0.5]
+Resultados ao elevar ao quadrado: [16.0, 100.0, 0.06]
+Resultados da raiz quadrada: [2.0, 3.16, 0.5]
+Test 3
+Input: 100
+Output:
+Lista original: [100.0]
+Resultados ao dobrar: [200.0]
+Resultados ao elevar ao quadrado: [10000.0]
+Resultados da raiz quadrada: [10.0]

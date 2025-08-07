@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Running tests for question_ch5_0003.py"
+echo "Running tests for question_ch5_0004.py"
 
-PYTHON_FILE="question_ch5_0003.py"
-TESTS_FILE="question_ch5_0003_test.txt"
+PYTHON_FILE="question_ch5_0004.py"
+TESTS_FILE="question_ch5_0004_test.txt"
 
 if [ ! -f "$PYTHON_FILE" ] || [ ! -f "$TESTS_FILE" ]; then
   echo "❌ Required files not found!"

@@ -24,8 +24,8 @@ Em seguida, gere uma questão completa sobre esse conceito, seguindo o formato d
 Cada questão deve conter apenas as seguintes seções, não insira nada além dos itens abaixo na questão:
 
 1.  **Enunciado:** Uma descrição clara do problema a ser resolvido.
-2.  **Code Solução:** O código Python funcional que resolve o problema proposto no enunciado.
-3.  **Testes:** Conjuntos de entrada e saída esperada para verificar a correção da `Code Solução`.
+2.  **Solução:** O código Python funcional que resolve o problema proposto no enunciado.
+3.  **Testes:** Conjuntos de entrada e saída esperada para verificar a correção da `Solução`.
 
 ---
 
@@ -42,7 +42,7 @@ Escreva um programa que solicita ao usuário dois valores, um do tipo inteiro (`
 
 Certifique-se de formatar adequadamente a saída dos resultados, indicando qual operação está sendo exibida.
 
-#### Code Solução
+#### Solução
 
 ```python
 num_int = int(input())

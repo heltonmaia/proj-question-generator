@@ -1,0 +1,58 @@
+"""Você foi encarregado de desenvolver um sistema para analisar um conjunto de dados numéricos. Sua tarefa é criar um programa Python que leia uma sequência de números do usuário, calcule a soma, a média e a quantidade total desses números, e então exiba esses resultados.
+
+O programa deve seguir as seguintes especificações:
+
+1.  **Entrada:** O usuário fornecerá uma linha de texto contendo números separados por espaços (ex: `"10.5 20 5.5 -2.0"`). O programa deve ser capaz de lidar com números inteiros e decimais.
+2.  **Função `calcular_estatisticas`:**
+    *   Crie uma função chamada `calcular_estatisticas` que aceita uma lista de números de ponto flutuante (`list[float]`) como parâmetro.
+    *   Esta função deve calcular:
+        *   A soma de todos os números na lista.
+        *   A média dos números (soma dividida pela quantidade de números).
+        *   A quantidade total de números na lista.
+    *   A função deve retornar esses três valores como uma tupla, na seguinte ordem: `(soma, media, quantidade)`.
+    *   **Importante:** Se a lista de entrada estiver vazia, a função deve retornar `(0.0, 0.0, 0)` para evitar erros de divisão por zero na média.
+3.  **Lógica Principal:**
+    *   Leia a linha de entrada do usuário e converta-a em uma lista de números de ponto flutuante.
+    *   Chame a função `calcular_estatisticas` com a lista de números.
+    *   Imprima os resultados formatados:
+        *   A soma e a média devem ser exibidas com duas casas decimais.
+        *   A quantidade de números deve ser exibida como um número inteiro.
+    *   Se a lista de entrada estiver vazia, imprima uma mensagem específica: "A lista de números está vazia. Não é possível calcular estatísticas.""""
+
+def calcular_estatisticas(numeros: list[float]) -> tuple[float, float, int]:
+    """
+    Calcula a soma, a média e a quantidade de números em uma lista.
+
+    Args:
+        numeros (list[float]): Uma lista de números de ponto flutuante.
+
+    Retorna:
+        tuple[float, float, int]: Uma tupla contendo a soma, a média e a quantidade
+                                   de números na lista. Se a lista estiver vazia,
+                                   retorna (0.0, 0.0, 0).
+    """
+    quantidade = len(numeros)
+    if quantidade == 0:
+        return 0.0, 0.0, 0
+
+    soma = sum(numeros)
+    media = soma / quantidade
+    return soma, media, quantidade
+
+# Lógica principal do programa
+entrada_str = input()
+
+# Converte a string de entrada para uma lista de floats
+if entrada_str.strip() == "":
+    numeros_digitados = []
+else:
+    numeros_digitados = [float(x) for x in entrada_str.split()]
+
+soma_total, media_calculada, quantidade_elementos = calcular_estatisticas(numeros_digitados)
+
+if quantidade_elementos == 0:
+    print("A lista de números está vazia. Não é possível calcular estatísticas.")
+else:
+    print(f"Soma dos números: {soma_total:.2f}")
+    print(f"Média dos números: {media_calculada:.2f}")
+    print(f"Quantidade de números: {quantidade_elementos}")

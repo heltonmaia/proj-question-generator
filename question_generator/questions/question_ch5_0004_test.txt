@@ -1,0 +1,22 @@
+Test 1
+Input: 10.5 20.0 5.5
+Output:
+Soma dos números: 36.00
+Média dos números: 12.00
+Quantidade de números: 3
+Test 2
+Input: 5 -2 8.5 0
+Output:
+Soma dos números: 11.50
+Média dos números: 2.88
+Quantidade de números: 4
+Test 3
+Input: 
+Output:
+A lista de números está vazia. Não é possível calcular estatísticas.
+Test 4
+Input: 42.7
+Output:
+Soma dos números: 42.70
+Média dos números: 42.70
+Quantidade de números: 1

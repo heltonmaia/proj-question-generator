@@ -1,44 +1,60 @@
-"""Você foi encarregado de criar uma ferramenta simples para calcular juros e montante de investimentos. Sua tarefa é desenvolver um programa Python que utilize uma função para calcular o **juro simples** e o **montante final** de um investimento, dado o capital inicial, a taxa de juros anual e o tempo em anos.
+"""Desenvolva um programa que analise uma lista de números inteiros fornecida pelo usuário. O programa deve conter uma única função chamada `analisar_caracteristicas_lista` que receba essa lista como argumento e retorne **quatro** valores:
 
-Sua solução deve atender aos seguintes requisitos:
+1.  A contagem de números pares.
+2.  A contagem de números ímpares.
+3.  A contagem de números positivos (ignorando o zero, que não é positivo nem negativo).
+4.  A contagem de números negativos (ignorando o zero).
 
-1.  **Criação de Função:** Implemente uma função chamada `calcular_juros_e_montante`.
-2.  **Parâmetros:** A função deve receber três parâmetros:
-    *   `capital` (tipo `float`): O valor principal do investimento.
-    *   `taxa` (tipo `float`): A taxa de juros anual, expressa em decimal (por exemplo, `0.05` para 5%).
-    *   `tempo` (tipo `float`): O período do investimento em anos.
-3.  **Docstrings e Type Hints:** Adicione uma `docstring` clara à função, descrevendo seu propósito, parâmetros e o que ela retorna. Utilize `type hints` para indicar os tipos dos parâmetros e do valor de retorno.
-4.  **Cálculos:**
-    *   **Juro Simples (JS):** Calcule usando a fórmula `JS = Capital * Taxa * Tempo`.
-    *   **Montante Final (M):** Calcule usando a fórmula `M = Capital + JS`.
-5.  **Retorno da Função:** A função deve retornar uma **tupla** contendo dois valores: primeiro o `juro_simples` e, em seguida, o `montante_final`.
-6.  **Interação com o Usuário:** No programa principal (fora da função), solicite ao usuário o `capital`, a `taxa` e o `tempo`. Em seguida, chame a função `calcular_juros_e_montante` com os valores fornecidos.
-7.  **Saída Formatada:** Imprima os resultados do juro simples e do montante final, formatados com **duas casas decimais** e identificando claramente cada valor."""
+O programa principal deve:
+1.  Ler uma sequência de números inteiros separados por espaço do usuário e convertê-los em uma lista de inteiros.
+2.  Chamar a função `analisar_caracteristicas_lista` passando a lista gerada.
+3.  Imprimir os quatro resultados retornados pela função em linhas separadas, com mensagens claras, seguindo o formato dos exemplos.
 
-def calcular_juros_e_montante(capital: float, taxa: float, tempo: float) -> tuple[float, float]:
+**Considerações:**
+*   Utilize `type hints` e `docstrings` na função para melhorar a clareza e documentação do código.
+*   O número 0 não deve ser contado nem como positivo nem como negativo."""
+
+def analisar_caracteristicas_lista(numeros: list[int]) -> tuple[int, int, int, int]:
     """
-    Calcula o juro simples e o montante final de um investimento.
+    Analisa uma lista de números inteiros e retorna a contagem de pares, ímpares,
+    positivos e negativos.
 
     Args:
-        capital (float): O valor inicial do investimento.
-        taxa (float): A taxa de juros anual (em decimal).
-        tempo (float): O tempo do investimento em anos.
+        numeros (list[int]): A lista de números inteiros a ser analisada.
 
     Returns:
-        tuple[float, float]: Uma tupla contendo (juro_simples, montante_final).
+        tuple[int, int, int, int]: Uma tupla contendo (contagem_pares, contagem_impares,
+                                      contagem_positivos, contagem_negativos).
     """
-    juros_simples = capital * taxa * tempo
-    montante_final = capital + juros_simples
-    return juros_simples, montante_final
+    count_pares = 0
+    count_impares = 0
+    count_positivos = 0
+    count_negativos = 0
 
-# Leitura dos valores de entrada
-capital_input = float(input())
-taxa_input = float(input())
-tempo_input = float(input())
+    for num in numeros:
+        # Verifica se o número é par ou ímpar
+        if num % 2 == 0:
+            count_pares += 1
+        else:
+            count_impares += 1
+
+        # Verifica se o número é positivo ou negativo (ignorando o zero)
+        if num > 0:
+            count_positivos += 1
+        elif num < 0:
+            count_negativos += 1
+            
+    return count_pares, count_impares, count_positivos, count_negativos
+
+# Leitura da entrada (sequência de números separados por espaço)
+entrada_str = input().split()
+lista_de_numeros = [int(x) for x in entrada_str]
 
 # Chamada da função e desempacotamento dos resultados
-juros, montante = calcular_juros_e_montante(capital_input, taxa_input, tempo_input)
+pares, impares, positivos, negativos = analisar_caracteristicas_lista(lista_de_numeros)
 
-# Impressão dos resultados formatados
-print(f"Juro Simples: R$ {juros:.2f}")
-print(f"Montante Final: R$ {montante:.2f}")
+# Impressão dos resultados
+print(f"Quantidade de números pares: {pares}")
+print(f"Quantidade de números ímpares: {impares}")
+print(f"Quantidade de números positivos: {positivos}")
+print(f"Quantidade de números negativos: {negativos}")

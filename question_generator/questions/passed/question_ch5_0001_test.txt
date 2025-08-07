@@ -1,0 +1,20 @@
+Test 1
+Input: 10\n5\n8
+Output:
+O menor número é: 5.0
+O maior número é: 10.0
+Test 2
+Input: 3.14\n1.71\n1.41
+Output:
+O menor número é: 1.41
+O maior número é: 3.14
+Test 3
+Input: -5\n0\n-10
+Output:
+O menor número é: -10.0
+O maior número é: 0.0
+Test 4
+Input: 1\n3.14\n2
+Output:
+O menor número é: 1.0
+O maior número é: 3.14

@@ -1,87 +1,95 @@
-### Enunciado
+#### Enunciado
 
-Desenvolva um programa Python que utilize uma função para calcular a soma e a média aritmética de três números fornecidos pelo usuário.
+Desenvolva uma função Python chamada `analisar_desempenho_notas` que receba uma lista de notas (números de ponto flutuante) de um estudante. A função deve calcular a média aritmética dessas notas e, em seguida, determinar quantos alunos tiveram uma nota estritamente superior à média calculada.
 
-Sua tarefa é criar:
+A função deve retornar dois valores:
+1.  A média das notas (um número de ponto flutuante).
+2.  A quantidade de notas que são estritamente maiores que a média (um número inteiro).
 
-1.  **Uma função** chamada `calcular_soma_media` que receberá três números (do tipo `float`) como parâmetros. Esta função deve calcular a soma e a média desses três números e **retornar ambos os resultados** (a soma e a média) simultaneamente, utilizando uma tupla.
-2.  No **programa principal**, solicite ao usuário que insira os três números. Em seguida, chame a função `calcular_soma_media` com os valores lidos e desempacote os resultados retornados. Por fim, exiba os valores calculados da soma e da média na tela, formatando-os para duas casas decimais.
+Certifique-se de incluir `docstrings` e `type hints` para a função, conforme as boas práticas de Python. Caso a lista de notas esteja vazia, a função deve retornar `(0.0, 0)`.
 
-### Code Solução
+#### Solução
 
 ```python
-def calcular_soma_media(num1: float, num2: float, num3: float) -> tuple[float, float]:
+def analisar_desempenho_notas(notas: list[float]) -> tuple[float, int]:
     """
-    Calcula a soma e a média aritmética de três números.
+    Analisa uma lista de notas, calculando a média e a quantidade de notas acima da média.
 
     Args:
-        num1 (float): O primeiro número.
-        num2 (float): O segundo número.
-        num3 (float): O terceiro número.
+        notas (list[float]): Uma lista de notas de ponto flutuante.
 
     Returns:
-        tuple[float, float]: Uma tupla contendo a soma e a média dos números,
-                             ambos formatados para duas casas decimais.
+        tuple[float, int]: Uma tupla contendo a média das notas e a quantidade de notas
+                           estritamente acima da média. Retorna (0.0, 0) se a lista estiver vazia.
     """
-    soma = num1 + num2 + num3
-    media = soma / 3
-    return soma, media
+    if not notas:
+        return 0.0, 0
 
-# Leitura dos números do usuário
-try:
-    numero1 = float(input())
-    numero2 = float(input())
-    numero3 = float(input())
+    soma_notas = sum(notas)
+    media = soma_notas / len(notas)
 
-    # Chamada da função e desempacotamento dos resultados
-    soma_total, media_final = calcular_soma_media(numero1, numero2, numero3)
-
-    # Exibição dos resultados formatados
-    print(f"Soma dos números: {soma_total:.2f}")
-    print(f"Média dos números: {media_final:.2f}")
-
-except ValueError:
-    print("Entrada inválida. Por favor, digite apenas números.")
-
+    notas_acima_media = 0
+    for nota in notas:
+        if nota > media:
+            notas_acima_media += 1
+            
+    return media, notas_acima_media
 ```
 
-### Testes
+#### Testes
 
 **Teste 1**
-Entrada:
-```
-10.0
-20.0
-30.0
+Entrada (simulando a chamada no programa principal):
+```python
+lista_de_notas = [7.0, 8.5, 6.0, 9.0, 7.5]
+media, acima_media = analisar_desempenho_notas(lista_de_notas)
+print(f"Média: {media:.2f}")
+print(f"Notas acima da média: {acima_media}")
 ```
 Saída:
 ```
-Soma dos números: 60.00
-Média dos números: 20.00
+Média: 7.60
+Notas acima da média: 2
 ```
 
 **Teste 2**
-Entrada:
-```
-5.5
-2.0
-8.5
+Entrada (simulando a chamada no programa principal):
+```python
+lista_de_notas = [5.0, 5.0, 5.0, 5.0]
+media, acima_media = analisar_desempenho_notas(lista_de_notas)
+print(f"Média: {media:.2f}")
+print(f"Notas acima da média: {acima_media}")
 ```
 Saída:
 ```
-Soma dos números: 16.00
-Média dos números: 5.33
+Média: 5.00
+Notas acima da média: 0
 ```
 
 **Teste 3**
-Entrada:
-```
--1.0
-0.0
-1.0
+Entrada (simulando a chamada no programa principal):
+```python
+lista_de_notas = [10.0, 9.5, 9.8, 9.2, 10.0]
+media, acima_media = analisar_desempenho_notas(lista_de_notas)
+print(f"Média: {media:.2f}")
+print(f"Notas acima da média: {acima_media}")
 ```
 Saída:
 ```
-Soma dos números: 0.00
-Média dos números: 0.00
+Média: 9.70
+Notas acima da média: 2
+```
+
+**Teste 4**
+Entrada (simulando a chamada no programa principal):
+```python
+lista_de_notas = []
+media, acima_media = analisar_desempenho_notas(lista_de_notas)
+print(f"Média: {media:.2f}")
+print(f"Notas acima da média: {acima_media}")
+```
+Saída:
+```
+Média: 0.00
+Notas acima da média: 0
 ```
